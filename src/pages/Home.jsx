@@ -1,5 +1,5 @@
-import Counter from './Films/Films';
+import Films from './Films/Films';
 
 export default function Home() {
-	return <Counter />;
+	return <Films />;
 }

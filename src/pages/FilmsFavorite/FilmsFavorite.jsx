@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import FilmCard from '../../components/FilmCard/FilmCard';
 
-import './Films.scss';
+import './FilmsFavorite.scss';
 
-function Films() {
+function FilmsFavorite() {
 	const [films, setFilms] = useState([]);
 	const [favorites, setFavorites] = useState([]);
 	const [loading, setLoading] = useState(false);
@@ -100,39 +100,28 @@ function Films() {
 
 	const favoritesIds = favorites.map((f) => f.movieId);
 
-	const filmsList = films.map((obj, index) => {
-		if (favoritesIds.includes(obj.id)) {
-			return (
-				<FilmCard
-					key={obj.id}
-					film={obj}
-					handleFavorite={removeFromFavorites}
-					isFavorite={true}
-				/>
-			);
-		} else {
-			return (
-				<FilmCard
-					key={obj.id}
-					film={obj}
-					handleFavorite={addToFavorites}
-					isFavorite={false}
-				/>
-			);
-		}
-	});
+	const filmsListFavorite = films
+		.filter((film) => favoritesIds.includes(film.id))
+		.map((film) => (
+			<FilmCard
+				key={film.id}
+				film={film}
+				handleFavorite={removeFromFavorites}
+				isFavorite={true}
+			/>
+		));
 
 	return (
 		<>
 			<div className="films">
-				<h1>Films list</h1>
+				<h1>Films Favorite list</h1>
 
 				<div className="films__list">
-					<ul>{filmsList}</ul>
+					<ul>{filmsListFavorite}</ul>
 				</div>
 			</div>
 		</>
 	);
 }
 
-export default Films;
+export default FilmsFavorite;

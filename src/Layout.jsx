@@ -8,9 +8,9 @@ import GlobalModal from './components/GlobalModal/GlobalModal';
 export default function Layout() {
 	const modalGlobal = useGlobalModal();
 
-	useEffect(() => {
-		console.log('Layout mounted');
-	}, []);
+	// useEffect(() => {
+	// 	console.log('Layout mounted');
+	// }, []);
 
 	return (
 		<>

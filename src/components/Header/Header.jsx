@@ -12,6 +12,9 @@ export default function Header() {
 
 			<ul>
 				<li>
+					<NavLink to={'/films'}>Films</NavLink>
+				</li>
+				<li>
 					<NavLink to={'/films-favorite'}>Films favorite</NavLink>
 				</li>
 				<li>
