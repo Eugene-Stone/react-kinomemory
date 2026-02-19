@@ -27,6 +27,13 @@ h6 {
 	color: #fff;
 }
 
+a {
+	color: inherit;
+	transition: 0.15s;
+	&:hover {
+		color: #61dafb;
+	}
+}
 
 .container {
 	margin-left: auto;

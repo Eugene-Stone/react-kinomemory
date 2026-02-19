@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import FilmCard from '../../components/FilmCard/FilmCard';
+import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
 
 import './Films.scss';
 
 function Films() {
 	const [films, setFilms] = useState([]);
 	const [favorites, setFavorites] = useState([]);
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
 	// Получение списка фильмов
@@ -98,6 +99,31 @@ function Films() {
 		}
 	}
 
+	if (loading) {
+		return (
+			<div className="films">
+				<h1>Films list</h1>
+
+				<div className="films__list">
+					<ul>
+						<li>
+							<FilmCardSkeleton />
+						</li>
+						<li>
+							<FilmCardSkeleton />
+						</li>
+						<li>
+							<FilmCardSkeleton />
+						</li>
+						<li>
+							<FilmCardSkeleton />
+						</li>
+					</ul>
+				</div>
+			</div>
+		);
+	}
+
 	const favoritesIds = favorites.map((f) => f.movieId);
 
 	const filmsList = films.map((obj, index) => {
@@ -108,6 +134,7 @@ function Films() {
 					film={obj}
 					handleFavorite={removeFromFavorites}
 					isFavorite={true}
+					loading={loading}
 				/>
 			);
 		} else {
@@ -117,10 +144,15 @@ function Films() {
 					film={obj}
 					handleFavorite={addToFavorites}
 					isFavorite={false}
+					loading={loading}
 				/>
 			);
 		}
 	});
+
+	// if (loading) {
+	// 	return <h2>Loading...</h2>;
+	// }
 
 	return (
 		<>

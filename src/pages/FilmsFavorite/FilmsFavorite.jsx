@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router';
 import FilmCard from '../../components/FilmCard/FilmCard';
+import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
 
 import './FilmsFavorite.scss';
 
@@ -98,6 +100,31 @@ function FilmsFavorite() {
 		}
 	}
 
+	if (loading) {
+		return (
+			<div className="films">
+				<h1>Films list</h1>
+
+				<div className="films__list">
+					<ul>
+						<li>
+							<FilmCardSkeleton />
+						</li>
+						<li>
+							<FilmCardSkeleton />
+						</li>
+						<li>
+							<FilmCardSkeleton />
+						</li>
+						<li>
+							<FilmCardSkeleton />
+						</li>
+					</ul>
+				</div>
+			</div>
+		);
+	}
+
 	const favoritesIds = favorites.map((f) => f.movieId);
 
 	const filmsListFavorite = films
@@ -111,17 +138,22 @@ function FilmsFavorite() {
 			/>
 		));
 
-	return (
-		<>
-			<div className="films">
-				<h1>Films Favorite list</h1>
+	if (!loading) {
+		<div className="films">
+			<h1>Films Favorite list</h1>
 
-				<div className="films__list">
+			<div className="films__list">
+				{filmsListFavorite.length >= 1 ? (
 					<ul>{filmsListFavorite}</ul>
-				</div>
+				) : (
+					<p>
+						Your favorite list empty. Choice your{' '}
+						<Link to={'/films'}>first favorite film</Link>
+					</p>
+				)}
 			</div>
-		</>
-	);
+		</div>;
+	}
 }
 
 export default FilmsFavorite;

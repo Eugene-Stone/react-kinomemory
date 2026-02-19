@@ -121,6 +121,14 @@ li.film__card {
 		}
 }
 
+.film-card-skeleton {
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 1px solid #ccc;
+	border-radius: 15px;
+}
+
 
 .modal {
   .title {

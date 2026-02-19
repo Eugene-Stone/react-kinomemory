@@ -1,7 +1,7 @@
 import { useOutletContext, Link } from 'react-router-dom';
 import './FilmCard.scss';
 
-export default function FilmCard({ film, isFavorite, handleFavorite }) {
+export default function FilmCard({ film, isFavorite, handleFavorite, loading }) {
 	const { modalGlobal } = useOutletContext();
 
 	const getModalContent = (film) => (
@@ -36,7 +36,7 @@ export default function FilmCard({ film, isFavorite, handleFavorite }) {
 				</button>
 			)}
 
-			<button onClick={() => modalGlobal.open(getModalContent(film))}>Open Modal</button>
+			<button onClick={() => modalGlobal.open(getModalContent(film))}>Open Brief</button>
 			<div className="rate">{film.rating}</div>
 			<div className="title">{film.title}</div>
 		</li>
