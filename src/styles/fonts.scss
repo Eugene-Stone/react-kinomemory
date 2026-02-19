@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
+// FONT 1
+$font_1: 'GoodTimes';
+$fontURL_1: '../assets/fonts/GoodTimes/';
+
+@mixin font_normal_1 {
+	font-family: $font_1;
+	font-style: normal;
+	font-display: swap;
+}
+
+@mixin font_italic_1 {
+	font-family: $font_1;
+	font-style: italic;
+	font-display: swap;
+}
+
+
+// FONT 1 ============================
+@font-face {
+	@include font_normal_1;
+	font-weight: 400;
+	src: url($fontURL_1 + 'GoodTimes.woff2') format("woff2");
+}
+@font-face {
+	@include font_italic_1;
+	font-weight: 400;
+	src: url($fontURL_1 + 'GoodTimes-Italic.woff2') format("woff2");
+}

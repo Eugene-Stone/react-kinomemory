@@ -1,0 +1,76 @@
+https://vite.dev/guide/static-deploy
+
+
+--open - Автоматическое открытие браузера
+"scripts": {
+	"start": "vite --open",
+	"dev": "vite --open",
+},
+
+Запускает тестовый сервер вместе с проектом
+"server": "json-server --watch db.json --port 3001",
+"start": "concurrently \"npm run dev\" \"npm run server\""
+
+
+GET    http://localhost:3001/favorites?userId=1
+POST   http://localhost:3001/favorites
+DELETE http://localhost:3001/favorites/1
+
+
+// Получение избранного
+useEffect(() => {
+	async function fetchFavorites() {
+	try {
+		setLoading(true);
+		const response = await fetch(`/api/users/${userId}/favorites`);
+		if (!response.ok) throw new Error("Ошибка загрузки");
+		const data = await response.json();
+		setFavorites(data);
+	} catch (err) {
+		setError(err.message);
+	} finally {
+		setLoading(false);
+	}
+	}
+
+	fetchFavorites();
+}, [userId]);
+
+
+// Добавление в избранное
+async function addToFavorites(movie) {
+	try {
+	const response = await fetch(`/api/users/${userId}/favorites`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(movie),
+	});
+
+	if (!response.ok) throw new Error("Ошибка добавления");
+
+	const newMovie = await response.json();
+	setFavorites((prev) => [...prev, newMovie]);
+	} catch (err) {
+	console.error(err);
+	}
+}
+
+// Удаление
+async function removeFromFavorites(movieId) {
+	try {
+	const response = await fetch(
+		`/api/users/${userId}/favorites/${movieId}`,
+		{ method: "DELETE" }
+	);
+
+	if (!response.ok) throw new Error("Ошибка удаления");
+
+	setFavorites((prev) =>
+		prev.filter((movie) => movie.id !== movieId)
+	);
+	} catch (err) {
+	console.error(err);
+	}
+}
