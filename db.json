@@ -1,102 +1,110 @@
 {
   "movies": [
     {
-      "id": 1,
+      "id": "1",
       "title": "The Shawshank Redemption",
       "rating": 9.3,
       "genre": "Drama",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
       "trailer": "https://www.youtube.com/watch?v=NmzuHjWmXOc"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "The Dark Knight",
       "rating": 9,
       "genre": "Action",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
       "trailer": "https://www.youtube.com/watch?v=EXeTwQWrcwY"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Inception",
       "rating": 8.8,
       "genre": "Sci-Fi",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
       "trailer": "https://www.youtube.com/watch?v=YoHD9XEInc0"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Fight Club",
       "rating": 8.8,
       "genre": "Drama",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg",
       "trailer": "https://www.youtube.com/watch?v=qtRKdVHc-cE"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Interstellar",
       "rating": 8.7,
       "genre": "Sci-Fi",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
       "trailer": "https://www.youtube.com/watch?v=zSWdZVtXT7E"
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "The Matrix",
       "rating": 8.7,
       "genre": "Sci-Fi",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
       "trailer": "https://www.youtube.com/watch?v=vKQi3bBA1y8"
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Gladiator",
       "rating": 8.5,
       "genre": "Historical Drama",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/8/8d/Gladiator_ver1.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg",
       "trailer": "https://www.youtube.com/watch?v=owK1qxDselE"
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "The Lord of the Rings: The Fellowship of the Ring",
       "rating": 8.8,
       "genre": "Fantasy",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/8/87/Ringstrilogyposter.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
       "trailer": "https://www.youtube.com/watch?v=V75dMMIW2B4"
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Pulp Fiction",
       "rating": 8.9,
       "genre": "Crime",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/8/82/Pulp_Fiction_cover.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
       "trailer": "https://www.youtube.com/watch?v=s7EdQ4FqbhY"
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "The Godfather",
       "rating": 9.2,
       "genre": "Crime",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
       "trailer": "https://www.youtube.com/watch?v=sY1S34973zA"
     }
   ],
   "favorites": [
     {
-      "id": 1,
-      "movieId": 1
+      "id": "1",
+      "movieId": "1"
     },
     {
-      "id": 2,
-      "movieId": 3
+      "id": "2",
+      "movieId": "3"
     },
     {
-      "id": 3,
-      "movieId": 5
+      "id": "3",
+      "movieId": "4"
     },
     {
-      "id": "ea2b",
-      "movieId": 10
+      "id": "2cbc",
+      "movieId": "10"
+    },
+    {
+      "id": "2ef4",
+      "movieId": "9"
+    },
+    {
+      "id": "062f",
+      "movieId": "6"
     }
   ]
 }

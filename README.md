@@ -1,16 +1,33 @@
 # React + Vite
+KinoMemory — SPA-проект на React с маршрутизацией, глобальной модалкой, работой с API и системой избранного. Проект демонстрирует работу с: React Router, кастомными хуками, глобальной модалкой (через Portal), json-server, REST API, управлением состоянием
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## 🛠 Технологии
+- React
+- React Router
+- Vite
+- SCSS
+- JSON Server
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+# Функциональность: 
+## Страница фильмов
+	Получение списка фильмов с сервера
+	Добавление фильма в избранное
+	Отображение списка избранного
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Избранное
+	POST / DELETE запросы
+	Проверка на дубли
+	Синхронизация с сервером
 
-## Expanding the ESLint configuration
+## Глобальная модалка
+	Открытие по клику
+	Динамический контент
+	Рендер через React Portal
+	Закрытие по overlay / кнопке
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Роутинг
+	Многостраничная структура
+	Layout с глобальным контекстом
+	404 fallback для GitHub Pages
