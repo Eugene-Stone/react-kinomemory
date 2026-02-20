@@ -1,124 +1,125 @@
 li.film__card {
-  list-style: none;
-  background-color: #1a1d23;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #343a46;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+	list-style: none;
+	background-color: #1a1d23;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid #343a46;
+	transition: transform 0.2s ease, border-color 0.2s ease;
+	display: flex;
+	flex-direction: column;
+	position: relative;
 
-  &:hover {
-    transform: translateY(-5px);
-    border-color: #61dafb;
-  }
-
-  a {
-    display: block;
-    aspect-ratio: 2 / 3;
-    overflow: hidden;
-	 &.image__link {
-		margin-bottom: 15px;
+	&:hover {
+		transform: translateY(-5px);
+		border-color: #61dafb;
 	}
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
+	a {
+		display: block;
+		aspect-ratio: 2 / 3;
+		overflow: hidden;
 
-	
+		&.image__link {
+			margin-bottom: 15px;
+		}
 
-    &:hover img {
-      transform: scale(1.05);
-    }
-  }
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.3s ease;
+		}
 
-  .rate {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(97, 218, 251, 0.9);
-    color: #000;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 0.85rem;
-    z-index: 1;
-  }
 
-  .title {
-    padding: 12px;
-    font-family: 'Merriweather', serif;
-    font-size: 1.1rem;
-    color: #fff;
-    flex-grow: 1;
-    text-align: center;
-  }
 
-  button {
-    margin: 0 12px 8px;
-    padding: 8px;
-    background-color: #384152;
-    border: 1px solid #4b5563;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
+		&:hover img {
+			transform: scale(1.05);
+		}
+	}
 
-    &:hover {
-      background-color: #4b5563;
-      border-color: #61dafb;
-    }
+	.rate {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background-color: rgba(97, 218, 251, 0.9);
+		color: #000;
+		padding: 4px 8px;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 0.85rem;
+		z-index: 1;
+	}
 
-    &:last-of-type {
-      margin-bottom: 12px;
-    }
-  }
+	.title {
+		padding: 12px;
+		font-family: 'Merriweather', serif;
+		font-size: 1.1rem;
+		color: #fff;
+		flex-grow: 1;
+		text-align: center;
+	}
 
-  .btn {
-			margin: 0 12px 8px;
-			padding: 10px;
-			font-size: 0.85rem;
-			font-weight: 600;
-			cursor: pointer;
-			border-radius: 6px;
-			transition: all 0.2s ease;
-			border: 1px solid transparent;
-			outline: none;
-			font-family: system-ui, -apple-system, sans-serif;
+	button {
+		margin: 0 12px 8px;
+		padding: 8px;
+		background-color: #384152;
+		border: 1px solid #4b5563;
+		border-radius: 6px;
+		color: #fff;
+		font-size: 0.85rem;
+		cursor: pointer;
+		transition: all 0.2s ease;
 
-			&--add-favorite {
-					background-color: #384152;
-					color: #61dafb;
-					border-color: #4b5563;
+		&:hover {
+			background-color: #4b5563;
+			border-color: #61dafb;
+		}
 
-					&:hover {
-							background-color: #4b5563;
-							border-color: #61dafb;
-							color: #ffffff;
-					}
-			}
+		&:last-of-type {
+			margin-bottom: 12px;
+		}
+	}
 
-			&--remove-favorite {
-					background-color: rgba(255, 107, 107, 0.1);
-					color: #ff6b67;
-					border-color: rgba(255, 107, 107, 0.3);
+	.btn {
+		margin: 0 12px 8px;
+		padding: 10px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		cursor: pointer;
+		border-radius: 6px;
+		transition: all 0.2s ease;
+		border: 1px solid transparent;
+		outline: none;
+		font-family: system-ui, -apple-system, sans-serif;
 
-					&:hover {
-							background-color: #ff6b67;
-							color: #ffffff;
-							border-color: #ff6b67;
-					}
-			}
+		&--add-favorite {
+			background-color: #384152;
+			color: #61dafb;
+			border-color: #4b5563;
 
-			&:active {
-					transform: scale(0.98);
+			&:hover {
+				background-color: #4b5563;
+				border-color: #61dafb;
+				color: #ffffff;
 			}
 		}
+
+		&--remove-favorite {
+			background-color: rgba(255, 107, 107, 0.1);
+			color: #ff6b67;
+			border-color: rgba(255, 107, 107, 0.3);
+
+			&:hover {
+				background-color: #ff6b67;
+				color: #ffffff;
+				border-color: #ff6b67;
+			}
+		}
+
+		&:active {
+			transform: scale(0.98);
+		}
+	}
 }
 
 .film-card-skeleton {
@@ -131,62 +132,63 @@ li.film__card {
 
 
 .modal {
-  .title {
-    font-family: 'Merriweather', serif;
-    font-size: 1.8rem;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-  }
+	.title {
+		font-family: 'Merriweather', serif;
+		font-size: 1.8rem;
+		color: #ffffff;
+		margin-bottom: 1.5rem;
+	}
 
-  .rate {
-	display: block;
-    color: #61dafb;
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-bottom: 0.2rem;
-  }
+	.rate {
+		display: block;
+		color: #61dafb;
+		font-weight: bold;
+		font-size: 1.1rem;
+		margin-bottom: 0.2rem;
+	}
 
-  .tgenree {
-    color: #adbac7;
-    font-size: 0.9rem;
-    margin-bottom: .5rem;
-    font-style: italic;
-  }
+	.genree {
+		color: #adbac7;
+		font-size: 0.9rem;
+		margin-bottom: .5rem;
+		font-style: italic;
+	}
 
-  img {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
+	img {
+		width: 100%;
+		max-height: 400px;
+		object-fit: cover;
+		object-position: top;
+		border-radius: 8px;
+		margin-bottom: 1.5rem;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	}
 
-  a {
-    display: block;
-    text-align: center;
-    background-color: #61dafb;
-    color: #23272f;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
+	a {
+		display: block;
+		text-align: center;
+		background-color: #61dafb;
+		color: #23272f;
+		text-decoration: none;
+		padding: 12px 20px;
+		border-radius: 6px;
+		font-weight: bold;
+		transition: background-color 0.2s ease;
 
-    &:hover {
-      background-color: #4fa8c7;
-    }
-  }
+		&:hover {
+			background-color: #4fa8c7;
+		}
+	}
 }
 
 @media (max-width: 480px) {
-  .modal {    
-    .title {
-      font-size: 1.4rem;
-    }
-    
-    img {
-      max-height: 300px;
-    }
-  }
+	.modal {
+		.title {
+			font-size: 1.4rem;
+		}
+
+		img {
+			max-height: 300px;
+		}
+	}
 }

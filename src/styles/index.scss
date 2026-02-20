@@ -42,3 +42,32 @@ a {
 	padding-right: 30px;
 	max-width: 900px;
 }
+
+.btn {
+	margin: 0 12px 8px;
+	padding: 8px;
+	background-color: #384152;
+	border: 1px solid #4b5563;
+	border-radius: 6px;
+	color: #fff;
+	font-size: 0.85rem;
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	&:hover {
+		background-color: #4b5563;
+		border-color: #61dafb;
+	}
+
+	&.active {
+		font-weight: 700;
+		color: #1a1d23;
+		background-color: #61dafb;
+		cursor: default;
+		pointer-events: none;
+	}
+
+	&:last-of-type {
+		margin-bottom: 12px;
+	}
+}

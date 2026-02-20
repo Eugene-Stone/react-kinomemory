@@ -6,7 +6,7 @@ export default function NotFoundPage() {
 			<h1>Page not found</h1>
 			<div className="button__box">
 				<Link to={'/'}>
-					<button>Go back home</button>
+					<button className="btn">Go back home</button>
 				</Link>
 			</div>
 		</section>
