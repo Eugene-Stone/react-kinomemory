@@ -1,6 +1,8 @@
 import { useState, useMemo, useEffect } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { useMovies } from '../../hooks/useMovies';
 import { useMoviesFilter } from '../../hooks/useMoviesFilter';
+import { useDebounce } from '../../hooks/useDebounce';
 import FilmCard from '../../components/FilmCard/FilmCard';
 import FilmsFilters from '../../components/FilmsFilters/FilmsFilters';
 import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
@@ -8,6 +10,9 @@ import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
 import './Films.scss';
 
 function Films() {
+	const { searchQuery } = useOutletContext();
+	const searchQueryDebounce = useDebounce(searchQuery, 700);
+
 	const { films, favorites, loading, error, addToFavorites, removeFromFavorites } = useMovies();
 	const {
 		sortType,
@@ -21,7 +26,7 @@ function Films() {
 		genre,
 		setGenre,
 		genreList,
-	} = useMoviesFilter(films, favorites);
+	} = useMoviesFilter(films, favorites, searchQueryDebounce);
 
 	// console.log(genreList);
 	// console.log(`ratingOverNine - ${ratingOverNine}`);
@@ -57,7 +62,7 @@ function Films() {
 	return (
 		<div className="films">
 			<div className="films__top">
-				<h1>Films list</h1>
+				<h1>Films {onlyFavorites && 'favorites'}</h1>
 
 				<div className="select">
 					<span>Sorting:</span>

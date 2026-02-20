@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { useGlobalModal } from './components/GlobalModal/useGlobalModal';
 
 import Header from './components/Header/Header';
@@ -7,6 +7,7 @@ import GlobalModal from './components/GlobalModal/GlobalModal';
 
 export default function Layout() {
 	const modalGlobal = useGlobalModal();
+	const [searchQuery, setSearchQuery] = useState('');
 
 	// useEffect(() => {
 	// 	console.log('Layout mounted');
@@ -14,8 +15,8 @@ export default function Layout() {
 
 	return (
 		<>
-			<Header />
-			<Outlet context={{ modalGlobal }} />
+			<Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+			<Outlet context={{ modalGlobal, searchQuery }} />
 
 			<GlobalModal modal={modalGlobal} />
 		</>

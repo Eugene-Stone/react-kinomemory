@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 
-export function useMoviesFilter(films, favorites) {
+export function useMoviesFilter(films, favorites, searchQueryDebounce) {
 	const [onlyFavorites, setOnlyFavorites] = useState(false);
 	const [ratingOverNine, setRatingOverNine] = useState(false);
 	const [genre, setGenre] = useState("All genre");
@@ -29,12 +29,20 @@ export function useMoviesFilter(films, favorites) {
 		}
 
 		if (ratingOverNine) {
-			copyArray = copyArray.filter((film) => film.rating > 9);
+			copyArray = copyArray.filter((film) => film.rating >= 9);
 		}
 
 		if (genre !== "All genre") {
 			copyArray = copyArray.filter(
 				(film) => film.genre.toLowerCase() === genre.toLowerCase(),
+			);
+		}
+
+		if (searchQueryDebounce !== '') {
+			copyArray = copyArray.filter((film) =>
+				film.title
+					.toLowerCase()
+					.includes(searchQueryDebounce.toLowerCase()),
 			);
 		}
 
@@ -59,7 +67,15 @@ export function useMoviesFilter(films, favorites) {
 		}
 
 		return copyArray;
-	}, [films, sortType, favoritesIds, onlyFavorites, ratingOverNine, genre]);
+	}, [
+		films,
+		sortType,
+		favoritesIds,
+		onlyFavorites,
+		ratingOverNine,
+		genre,
+		searchQueryDebounce,
+	]);
 
 	return {
 		sortType,
