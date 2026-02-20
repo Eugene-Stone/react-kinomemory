@@ -9,7 +9,22 @@ import './Films.scss';
 
 function Films() {
 	const { films, favorites, loading, error, addToFavorites, removeFromFavorites } = useMovies();
-	const { sortType, setSortType, favoritesIds, sortedFilms } = useMoviesFilter(films, favorites);
+	const {
+		sortType,
+		setSortType,
+		favoritesIds,
+		sortedFilms,
+		onlyFavorites,
+		setOnlyFavorites,
+		ratingOverNine,
+		setRatingOverNine,
+		genre,
+		setGenre,
+		genreList,
+	} = useMoviesFilter(films, favorites);
+
+	// console.log(genreList);
+	// console.log(`ratingOverNine - ${ratingOverNine}`);
 
 	// const filmsList = films.map((obj, index) => {
 	const filmsList = sortedFilms.map((obj, index) => {
@@ -44,7 +59,7 @@ function Films() {
 			<div className="films__top">
 				<h1>Films list</h1>
 
-				<div className="sorting">
+				<div className="select">
 					<span>Sorting:</span>
 					<select
 						name="#sorting"
@@ -59,7 +74,15 @@ function Films() {
 			</div>
 
 			<div className="films__list-box">
-				<FilmsFilters />
+				<FilmsFilters
+					onlyFavorites={onlyFavorites}
+					setOnlyFavorites={setOnlyFavorites}
+					ratingOverNine={ratingOverNine}
+					setRatingOverNine={setRatingOverNine}
+					genre={genre}
+					setGenre={setGenre}
+					genreList={genreList}
+				/>
 
 				{loading ? (
 					<ul className="films__list">{loadingSkeleton}</ul>

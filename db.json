@@ -264,40 +264,16 @@
   ],
   "favorites": [
     {
-      "id": "2da4",
-      "movieId": "7"
+      "id": "1c36",
+      "movieId": "26"
     },
     {
-      "id": "ebcb",
-      "movieId": "5"
-    },
-    {
-      "id": "3611",
+      "id": "bbce",
       "movieId": "11"
     },
     {
-      "id": "a98b",
-      "movieId": "10"
-    },
-    {
-      "id": "5ad6",
-      "movieId": "2"
-    },
-    {
-      "id": "4d67",
-      "movieId": "1"
-    },
-    {
-      "id": "1a1b",
-      "movieId": "4"
-    },
-    {
-      "id": "0b9b",
-      "movieId": "27"
-    },
-    {
-      "id": "297a",
-      "movieId": "25"
+      "id": "78be",
+      "movieId": "21"
     }
   ]
 }
