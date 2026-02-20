@@ -166,12 +166,14 @@ export function useMovies() {
 		}
 	}
 
+
+	
 	return {
 		films,
 		favorites,
 		loading,
 		error,
 		addToFavorites,
-		removeFromFavorites,
+		removeFromFavorites
 	};
 }
