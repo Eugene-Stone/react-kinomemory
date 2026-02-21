@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
 			{ path: '*', element: <NotFoundPage /> },
 			{ index: true, element: <Home /> },
 			{ path: '/privacy', element: <Privacy /> },
-			{ path: '/films/:id', element: <Film /> },
+			{ path: '/films/film/:id', element: <Film /> },
 		],
 	},
 ]);

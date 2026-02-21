@@ -1,8 +1,21 @@
 // import { useDebounceValue } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import './Header.scss';
 
 export default function Header({ searchQuery, setSearchQuery }) {
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	function handleSearchChange(value) {
+		// const value = e.target.value;
+		setSearchQuery(value);
+
+		// If not films page
+		if (location.pathname !== '/') {
+			navigate('/');
+		}
+	}
+
 	return (
 		<div className="header">
 			<nav>
@@ -28,11 +41,12 @@ export default function Header({ searchQuery, setSearchQuery }) {
 					type="text"
 					className="header__search-input"
 					placeholder="Search film..."
-					onChange={(e) => setSearchQuery(e.target.value)}
+					// onChange={(e) => setSearchQuery(e.target.value)}
+					onChange={(e) => handleSearchChange(e.target.value)}
 				/>
 				<button
 					className="header__search-btn"
-					onClick={(e) => (e.preventDefault(), setSearchQuery(searchQuery))}></button>
+					onClick={(e) => (e.preventDefault(), handleSearchChange(searchQuery))}></button>
 			</form>
 		</div>
 	);

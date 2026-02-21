@@ -1,6 +1,5 @@
-import { useState, useMemo, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { useMovies } from '../../hooks/useMovies';
+// import { useMovies } from '../../hooks/useMovies';
 import { useMoviesFilter } from '../../hooks/useMoviesFilter';
 import { useDebounce } from '../../hooks/useDebounce';
 import FilmCard from '../../components/FilmCard/FilmCard';
@@ -10,10 +9,13 @@ import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
 import './Films.scss';
 
 function Films() {
-	const { searchQuery } = useOutletContext();
+	const { searchQuery, films, favorites, loading, error, addToFavorites, removeFromFavorites } =
+		useOutletContext();
+
 	const searchQueryDebounce = useDebounce(searchQuery, 700);
 
-	const { films, favorites, loading, error, addToFavorites, removeFromFavorites } = useMovies();
+	// const { films, favorites, loading, error, addToFavorites, removeFromFavorites } = useMovies();
+
 	const {
 		sortType,
 		setSortType,

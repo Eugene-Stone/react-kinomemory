@@ -18,7 +18,7 @@ export default function FilmCard({ film, isFavorite, handleFavorite, loading }) 
 
 	return (
 		<li className="film__card" key={film.title}>
-			<Link to={`/films/film${film.id}`} className="image__link">
+			<Link to={`/films/film/${film.id}`} className="image__link">
 				<img src={film.poster} alt={film.title} />
 			</Link>
 
@@ -38,7 +38,9 @@ export default function FilmCard({ film, isFavorite, handleFavorite, loading }) 
 
 			<button onClick={() => modalGlobal.open(getModalContent(film))}>Open Brief</button>
 			<div className="rate">{film.rating}</div>
-			<div className="title">{film.title}</div>
+			<div className="title">
+				<Link to={`/films/film${film.id}`}>{film.title}</Link>
+			</div>
 		</li>
 	);
 }

@@ -1,0 +1,97 @@
+.film__page {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 30px;
+  color: #ffffff;
+
+  .film__media {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .poster {
+      img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 1px solid #343a46;
+      }
+    }
+
+    .trailer {
+      a {
+        display: block;
+        text-align: center;
+        background-color: #61dafb;
+        color: #23272f;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+
+        &:hover {
+          background-color: #4fa8c7;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  .film__content {
+    .title {
+      font-size: 3rem;
+      margin: 0 0 1rem 0;
+      line-height: 1.1;
+      border-left: none; // Убираем линию, если она была в глобальном h1
+      padding-left: 0;
+    }
+
+    .rating {
+      display: inline-block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #61dafb;
+      background: rgba(97, 218, 251, 0.1);
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .genre {
+      font-size: 1rem;
+      color: #adbac7;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ebedf0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .film__page {
+    grid-template-columns: 1fr;
+    margin: 1.5rem auto;
+
+    .film__media {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .film__content {
+      text-align: center;
+      
+      .title {
+        font-size: 2rem;
+      }
+    }
+  }
+}

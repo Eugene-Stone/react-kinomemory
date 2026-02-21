@@ -1,3 +1,5 @@
+@use '../../styles/_variables.scss' as *;
+
 li.film__card {
 	list-style: none;
 	background-color: #1a1d23;
@@ -14,15 +16,11 @@ li.film__card {
 		border-color: #61dafb;
 	}
 
-	a {
+	.image__link {
 		display: block;
 		aspect-ratio: 2 / 3;
 		overflow: hidden;
-
-		&.image__link {
-			margin-bottom: 15px;
-		}
-
+		margin-bottom: 15px;
 		img {
 			width: 100%;
 			height: 100%;
@@ -32,8 +30,16 @@ li.film__card {
 
 
 
-		&:hover img {
-			transform: scale(1.05);
+		&:hover {
+			img {
+				transform: scale(1.05);
+			}
+			~ .title {
+				a {
+					// text-decoration: underline;
+					color: $accent;
+				}
+			}
 		}
 	}
 
@@ -51,12 +57,16 @@ li.film__card {
 	}
 
 	.title {
-		padding: 12px;
+		padding: 12px 5px 25px;
 		font-family: 'Merriweather', serif;
 		font-size: 1.1rem;
 		color: #fff;
 		flex-grow: 1;
 		text-align: center;
+		a {
+			// color: $accent;
+			text-decoration: none;
+		}
 	}
 
 	button {
@@ -120,6 +130,7 @@ li.film__card {
 			transform: scale(0.98);
 		}
 	}
+
 }
 
 .film-card-skeleton {
@@ -130,65 +141,3 @@ li.film__card {
 	border-radius: 15px;
 }
 
-
-.modal {
-	.title {
-		font-family: 'Merriweather', serif;
-		font-size: 1.8rem;
-		color: #ffffff;
-		margin-bottom: 1.5rem;
-	}
-
-	.rate {
-		display: block;
-		color: #61dafb;
-		font-weight: bold;
-		font-size: 1.1rem;
-		margin-bottom: 0.2rem;
-	}
-
-	.genree {
-		color: #adbac7;
-		font-size: 0.9rem;
-		margin-bottom: .5rem;
-		font-style: italic;
-	}
-
-	img {
-		width: 100%;
-		max-height: 400px;
-		object-fit: cover;
-		object-position: top;
-		border-radius: 8px;
-		margin-bottom: 1.5rem;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-	}
-
-	a {
-		display: block;
-		text-align: center;
-		background-color: #61dafb;
-		color: #23272f;
-		text-decoration: none;
-		padding: 12px 20px;
-		border-radius: 6px;
-		font-weight: bold;
-		transition: background-color 0.2s ease;
-
-		&:hover {
-			background-color: #4fa8c7;
-		}
-	}
-}
-
-@media (max-width: 480px) {
-	.modal {
-		.title {
-			font-size: 1.4rem;
-		}
-
-		img {
-			max-height: 300px;
-		}
-	}
-}

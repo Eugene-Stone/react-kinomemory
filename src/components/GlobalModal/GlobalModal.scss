@@ -72,3 +72,71 @@
 .modal {
 	animation: modalFadeIn 0.3s ease-out;
 }
+
+
+
+
+
+// Modal Film
+
+.modal {
+	.title {
+		font-family: 'Merriweather', serif;
+		font-size: 1.8rem;
+		color: #ffffff;
+		margin-bottom: 1.5rem;
+	}
+
+	.rate {
+		display: block;
+		color: #61dafb;
+		font-weight: bold;
+		font-size: 1.1rem;
+		margin-bottom: 0.2rem;
+	}
+
+	.genree {
+		color: #adbac7;
+		font-size: 0.9rem;
+		margin-bottom: .5rem;
+		font-style: italic;
+	}
+
+	img {
+		width: 100%;
+		max-height: 400px;
+		object-fit: cover;
+		object-position: top;
+		border-radius: 8px;
+		margin-bottom: 1.5rem;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	}
+
+	a {
+		display: block;
+		text-align: center;
+		background-color: #61dafb;
+		color: #23272f;
+		text-decoration: none;
+		padding: 12px 20px;
+		border-radius: 6px;
+		font-weight: bold;
+		transition: background-color 0.2s ease;
+
+		&:hover {
+			background-color: #4fa8c7;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.modal {
+		.title {
+			font-size: 1.4rem;
+		}
+
+		img {
+			max-height: 300px;
+		}
+	}
+}

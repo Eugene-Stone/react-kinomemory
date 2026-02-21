@@ -1,194 +1,70 @@
-li.film__card {
-	list-style: none;
-	background-color: #1a1d23;
-	border-radius: 12px;
-	overflow: hidden;
-	border: 1px solid #343a46;
-	transition: transform 0.2s ease, border-color 0.2s ease;
+
+.films__top {
 	display: flex;
-	flex-direction: column;
-	position: relative;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2rem;
+	gap: 20px;
 
-	&:hover {
-		transform: translateY(-5px);
-		border-color: #61dafb;
+	h1 {
+		margin: 0 !important;
+	}
+}
+
+.select {
+	> span {
+		margin-right: 10px;
 	}
 
-	a {
-		display: block;
-		aspect-ratio: 2 / 3;
-		overflow: hidden;
-
-		&.image__link {
-			margin-bottom: 15px;
-		}
-
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			transition: transform 0.3s ease;
-		}
-
-
-
-		&:hover img {
-			transform: scale(1.05);
-		}
-	}
-
-	.rate {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		background-color: rgba(97, 218, 251, 0.9);
-		color: #000;
-		padding: 4px 8px;
-		border-radius: 4px;
-		font-weight: bold;
-		font-size: 0.85rem;
-		z-index: 1;
-	}
-
-	.title {
-		padding: 12px;
-		font-family: 'Merriweather', serif;
-		font-size: 1.1rem;
-		color: #fff;
-		flex-grow: 1;
-		text-align: center;
-	}
-
-	button {
-		margin: 0 12px 8px;
-		padding: 8px;
-		background-color: #384152;
-		border: 1px solid #4b5563;
+	select {
+		appearance: none;
+		background-color: #2d333b;
+		color: #ffffff;
+		border: 1px solid #444c56;
 		border-radius: 6px;
-		color: #fff;
-		font-size: 0.85rem;
+		padding: 8px 35px 8px 12px;
+		font-size: 0.95rem;
 		cursor: pointer;
-		transition: all 0.2s ease;
+		outline: none;
+		transition: border-color 0.2s ease;
 
-		&:hover {
-			background-color: #4b5563;
+		// Кастомная стрелочка через background-image
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2361dafb'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 10px center;
+		background-size: 16px;
+
+		&:focus {
 			border-color: #61dafb;
 		}
 
-		&:last-of-type {
-			margin-bottom: 12px;
+		option {
+			background-color: #2d333b;
+			color: #ffffff;
 		}
 	}
+}
 
-	.btn {
-		margin: 0 12px 8px;
-		padding: 10px;
-		font-size: 0.85rem;
-		font-weight: 600;
-		cursor: pointer;
-		border-radius: 6px;
-		transition: all 0.2s ease;
-		border: 1px solid transparent;
-		outline: none;
-		font-family: system-ui, -apple-system, sans-serif;
+@media (max-width: 600px) {
+	.films__top {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
 
-		&--add-favorite {
-			background-color: #384152;
-			color: #61dafb;
-			border-color: #4b5563;
+		.select {
+			width: 100%;
+			> span {
+				display: none;
+			}
 
-			&:hover {
-				background-color: #4b5563;
-				border-color: #61dafb;
-				color: #ffffff;
+			select {
+				width: 100%;
 			}
 		}
-
-		&--remove-favorite {
-			background-color: rgba(255, 107, 107, 0.1);
-			color: #ff6b67;
-			border-color: rgba(255, 107, 107, 0.3);
-
-			&:hover {
-				background-color: #ff6b67;
-				color: #ffffff;
-				border-color: #ff6b67;
-			}
-		}
-
-		&:active {
-			transform: scale(0.98);
-		}
 	}
-}
-
-.film-card-skeleton {
-	display: block;
-	width: 100%;
-	height: auto;
-	border: 1px solid #ccc;
-	border-radius: 15px;
-}
-
-
-.modal {
-	.title {
-		font-family: 'Merriweather', serif;
-		font-size: 1.8rem;
-		color: #ffffff;
-		margin-bottom: 1.5rem;
-	}
-
-	.rate {
-		display: block;
-		color: #61dafb;
-		font-weight: bold;
-		font-size: 1.1rem;
-		margin-bottom: 0.2rem;
-	}
-
-	.genree {
-		color: #adbac7;
-		font-size: 0.9rem;
-		margin-bottom: .5rem;
-		font-style: italic;
-	}
-
-	img {
-		width: 100%;
-		max-height: 400px;
-		object-fit: cover;
-		object-position: top;
-		border-radius: 8px;
-		margin-bottom: 1.5rem;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-	}
-
-	a {
-		display: block;
-		text-align: center;
-		background-color: #61dafb;
-		color: #23272f;
-		text-decoration: none;
-		padding: 12px 20px;
-		border-radius: 6px;
-		font-weight: bold;
-		transition: background-color 0.2s ease;
-
-		&:hover {
-			background-color: #4fa8c7;
-		}
-	}
-}
-
-@media (max-width: 480px) {
-	.modal {
-		.title {
-			font-size: 1.4rem;
-		}
-
-		img {
-			max-height: 300px;
+	.select {
+		> span {
+			display: none;
 		}
 	}
 }
