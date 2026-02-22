@@ -37,7 +37,7 @@ export function useMoviesFilter(films, favorites, searchQueryDebounce) {
 				(film) => film.genre.toLowerCase() === genre.toLowerCase(),
 			);
 		}
-
+		// console.log(searchQueryDebounce);
 		if (searchQueryDebounce !== '') {
 			copyArray = copyArray.filter((film) =>
 				film.title

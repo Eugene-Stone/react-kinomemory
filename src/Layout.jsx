@@ -2,6 +2,8 @@ import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import { useGlobalModal } from './components/GlobalModal/useGlobalModal';
 import { useMovies } from './hooks/useMovies';
+import { useMoviesFilter } from './hooks/useMoviesFilter';
+import { useDebounce } from './hooks/useDebounce';
 
 import Header from './components/Header/Header';
 import GlobalModal from './components/GlobalModal/GlobalModal';
@@ -10,6 +12,15 @@ export default function Layout() {
 	const modalGlobal = useGlobalModal();
 	const [searchQuery, setSearchQuery] = useState('');
 	const moviesData = useMovies();
+	// console.log(moviesData.films);
+
+	const searchQueryDebounce = useDebounce(searchQuery, 700);
+
+	const moviesFilterData = useMoviesFilter(
+		moviesData.films,
+		moviesData.favorites,
+		searchQueryDebounce,
+	);
 
 	// useEffect(() => {
 	// 	console.log('Layout mounted');
@@ -18,7 +29,9 @@ export default function Layout() {
 	return (
 		<>
 			<Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-			<Outlet context={{ modalGlobal, searchQuery, ...moviesData }} />
+			<Outlet
+				context={{ modalGlobal, searchQueryDebounce, ...moviesData, ...moviesFilterData }}
+			/>
 
 			<GlobalModal modal={modalGlobal} />
 		</>

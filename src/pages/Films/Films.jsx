@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router-dom';
 // import { useMovies } from '../../hooks/useMovies';
-import { useMoviesFilter } from '../../hooks/useMoviesFilter';
-import { useDebounce } from '../../hooks/useDebounce';
+// import { useMoviesFilter } from '../../hooks/useMoviesFilter';
+// import { useDebounce } from '../../hooks/useDebounce';
 import FilmCard from '../../components/FilmCard/FilmCard';
 import FilmsFilters from '../../components/FilmsFilters/FilmsFilters';
 import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
@@ -9,14 +9,14 @@ import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
 import './Films.scss';
 
 function Films() {
-	const { searchQuery, films, favorites, loading, error, addToFavorites, removeFromFavorites } =
-		useOutletContext();
-
-	const searchQueryDebounce = useDebounce(searchQuery, 700);
-
-	// const { films, favorites, loading, error, addToFavorites, removeFromFavorites } = useMovies();
-
 	const {
+		searchQuery,
+		films,
+		favorites,
+		loading,
+		error,
+		addToFavorites,
+		removeFromFavorites,
 		sortType,
 		setSortType,
 		favoritesIds,
@@ -28,7 +28,23 @@ function Films() {
 		genre,
 		setGenre,
 		genreList,
-	} = useMoviesFilter(films, favorites, searchQueryDebounce);
+	} = useOutletContext();
+
+	// const searchQueryDebounce = useDebounce(searchQuery, 700);
+
+	// const {
+	// sortType,
+	// setSortType,
+	// favoritesIds,
+	// sortedFilms,
+	// onlyFavorites,
+	// setOnlyFavorites,
+	// ratingOverNine,
+	// setRatingOverNine,
+	// genre,
+	// setGenre,
+	// genreList,
+	// } = useMoviesFilter(films, favorites, searchQueryDebounce);
 
 	// console.log(genreList);
 	// console.log(`ratingOverNine - ${ratingOverNine}`);
