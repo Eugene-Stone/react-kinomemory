@@ -5,6 +5,10 @@ export function useMoviesFilter(films, favorites, searchQueryDebounce) {
 	const [ratingOverNine, setRatingOverNine] = useState(false);
 	const [genre, setGenre] = useState("All genre");
 
+	// For pagination
+	const [currentPage, setCurrentPage] = useState(1);
+	const limitPerPage = 4;
+
 	const [sortType, setSortType] = useState(() => {
 		return localStorage.getItem("sortType") || "alphabet";
 	});
@@ -38,7 +42,7 @@ export function useMoviesFilter(films, favorites, searchQueryDebounce) {
 			);
 		}
 		// console.log(searchQueryDebounce);
-		if (searchQueryDebounce !== '') {
+		if (searchQueryDebounce !== "") {
 			copyArray = copyArray.filter((film) =>
 				film.title
 					.toLowerCase()
@@ -66,7 +70,17 @@ export function useMoviesFilter(films, favorites, searchQueryDebounce) {
 			});
 		}
 
-		return copyArray;
+		// Pagination
+		const totalPages = Math.ceil(copyArray.length / limitPerPage);
+
+		const paginatedFilms = copyArray.slice(
+			(currentPage - 1) * limitPerPage,
+			currentPage * limitPerPage,
+		);
+
+		copyArray = paginatedFilms;
+
+		return { array: copyArray, total: totalPages };
 	}, [
 		films,
 		sortType,
@@ -75,7 +89,9 @@ export function useMoviesFilter(films, favorites, searchQueryDebounce) {
 		ratingOverNine,
 		genre,
 		searchQueryDebounce,
+		currentPage,
 	]);
+	
 
 	return {
 		sortType,
@@ -89,5 +105,8 @@ export function useMoviesFilter(films, favorites, searchQueryDebounce) {
 		genre,
 		setGenre,
 		genreList,
+		currentPage,
+		setCurrentPage,
+		limitPerPage
 	};
 }

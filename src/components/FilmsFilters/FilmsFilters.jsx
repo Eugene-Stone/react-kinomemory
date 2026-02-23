@@ -8,6 +8,7 @@ export default function FilmsFilters({
 	genre,
 	setGenre,
 	genreList,
+	setCurrentPage,
 }) {
 	return (
 		<div className="films__filter-box">
@@ -15,14 +16,14 @@ export default function FilmsFilters({
 				<li className="films__filter-item">
 					<button
 						className={`btn films__filter-btn ${onlyFavorites && 'active'}`}
-						onClick={() => setOnlyFavorites((prev) => !prev)}>
+						onClick={() => (setOnlyFavorites((prev) => !prev), setCurrentPage(1))}>
 						Only favorites
 					</button>
 				</li>
 				<li>
 					<button
 						className={`btn films__filter-btn ${ratingOverNine && 'active'}`}
-						onClick={() => setRatingOverNine((prev) => !prev)}>
+						onClick={() => (setRatingOverNine((prev) => !prev), setCurrentPage(1))}>
 						Rating over 9
 					</button>
 				</li>
@@ -30,7 +31,10 @@ export default function FilmsFilters({
 
 			<div className="select">
 				<span>Genre:</span>
-				<select name="#genre" value={genre} onChange={(e) => setGenre(e.target.value)}>
+				<select
+					name="#genre"
+					value={genre}
+					onChange={(e) => (setGenre(e.target.value), setCurrentPage(1))}>
 					<option value="All genre">All genre</option>
 
 					{genreList.map((genreItem) => (

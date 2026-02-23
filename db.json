@@ -264,10 +264,6 @@
   ],
   "favorites": [
     {
-      "id": "1c36",
-      "movieId": "26"
-    },
-    {
       "id": "bbce",
       "movieId": "11"
     },
@@ -282,6 +278,10 @@
     {
       "id": "fa8b",
       "movieId": "4"
+    },
+    {
+      "id": "d385",
+      "movieId": "23"
     }
   ]
 }

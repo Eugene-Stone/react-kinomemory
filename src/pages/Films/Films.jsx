@@ -5,6 +5,7 @@ import { useOutletContext } from 'react-router-dom';
 import FilmCard from '../../components/FilmCard/FilmCard';
 import FilmsFilters from '../../components/FilmsFilters/FilmsFilters';
 import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
+import FilmsPagination from '../../components/FilmsPagination/FilmsPagination';
 
 import './Films.scss';
 
@@ -28,29 +29,16 @@ function Films() {
 		genre,
 		setGenre,
 		genreList,
+		currentPage,
+		setCurrentPage,
+		limitPerPage,
 	} = useOutletContext();
 
-	// const searchQueryDebounce = useDebounce(searchQuery, 700);
+	const sortedFilmsArray = sortedFilms.array;
+	const totalPages = sortedFilms.total;
+	console.log(totalPages);
 
-	// const {
-	// sortType,
-	// setSortType,
-	// favoritesIds,
-	// sortedFilms,
-	// onlyFavorites,
-	// setOnlyFavorites,
-	// ratingOverNine,
-	// setRatingOverNine,
-	// genre,
-	// setGenre,
-	// genreList,
-	// } = useMoviesFilter(films, favorites, searchQueryDebounce);
-
-	// console.log(genreList);
-	// console.log(`ratingOverNine - ${ratingOverNine}`);
-
-	// const filmsList = films.map((obj, index) => {
-	const filmsList = sortedFilms.map((obj, index) => {
+	const filmsList = sortedFilmsArray.map((obj, index) => {
 		const isFavorite = favoritesIds.includes(obj.id);
 
 		return (
@@ -105,6 +93,7 @@ function Films() {
 					genre={genre}
 					setGenre={setGenre}
 					genreList={genreList}
+					setCurrentPage={setCurrentPage}
 				/>
 
 				{loading ? (
@@ -113,6 +102,12 @@ function Films() {
 					<ul className="films__list">{filmsList}</ul>
 				)}
 			</div>
+
+			<FilmsPagination
+				currentPage={currentPage}
+				totalPages={totalPages}
+				setCurrentPage={setCurrentPage}
+			/>
 		</div>
 	);
 }
