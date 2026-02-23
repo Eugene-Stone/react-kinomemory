@@ -7,8 +7,8 @@ const FilmCardSkeleton = (props) => (
 		width={100}
 		height={208}
 		viewBox="0 0 100 208"
-		backgroundColor="#797171"
-		foregroundColor="#48a1d5"
+		backgroundColor="#2f3640"
+		foregroundColor="#3d4754"
 		{...props}>
 		<rect x="0" y="0" rx="5" ry="5" width="100" height="150" />
 		<rect x="20" y="195" rx="2" ry="2" width="60" height="7" />

@@ -1,10 +1,11 @@
-// import { useDebounceValue } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { useThemeContext } from '../../context/useThemeContext';
 import './Header.scss';
 
-export default function Header({ searchQuery, setSearchQuery, isDark, setIsDark }) {
+export default function Header({ searchQuery, setSearchQuery }) {
 	const navigate = useNavigate();
 	const location = useLocation();
+	const { isDark, setIsDark } = useThemeContext();
 
 	function handleSearchChange(value) {
 		// const value = e.target.value;

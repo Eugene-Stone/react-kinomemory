@@ -19,7 +19,7 @@ export default function FilmCard({ film, isFavorite, handleFavorite, loading }) 
 	return (
 		<li className="film__card" key={film.title}>
 			<Link to={`/films/film/${film.id}`} className="image__link">
-				<img src={film.poster} alt={film.title} />
+				<img src={film.poster} alt={film.title} width="300" height="450" />
 			</Link>
 
 			{/* <button onClick={() => handleFavorite(film.id)}>Add Favorite</button> */}

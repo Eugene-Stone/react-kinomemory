@@ -20,7 +20,7 @@ export default function Film() {
 			<section className="film__page">
 				<div className="film__media">
 					<div className="poster">
-						<img src={film.poster} alt={film.title} />
+						<img src={film.poster} alt={film.title} width="300" height="450" />
 					</div>
 					<div className="trailer">
 						<a href={film.trailer} target="_blank">
