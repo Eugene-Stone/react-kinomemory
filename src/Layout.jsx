@@ -7,6 +7,7 @@ import { useDebounce } from './hooks/useDebounce';
 
 import Header from './components/Header/Header';
 import GlobalModal from './components/GlobalModal/GlobalModal';
+import ScrollToTopButton from './components/ScrollToTop/ScrollToTop';
 
 export default function Layout() {
 	const modalGlobal = useGlobalModal();
@@ -34,6 +35,7 @@ export default function Layout() {
 			/>
 
 			<GlobalModal modal={modalGlobal} />
+			<ScrollToTopButton />
 		</>
 	);
 }
