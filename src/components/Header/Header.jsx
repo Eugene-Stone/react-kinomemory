@@ -2,7 +2,7 @@
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import './Header.scss';
 
-export default function Header({ searchQuery, setSearchQuery }) {
+export default function Header({ searchQuery, setSearchQuery, isDark, setIsDark }) {
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -15,6 +15,7 @@ export default function Header({ searchQuery, setSearchQuery }) {
 			navigate('/');
 		}
 	}
+	console.log(isDark);
 
 	return (
 		<div className="header">
@@ -48,6 +49,10 @@ export default function Header({ searchQuery, setSearchQuery }) {
 					className="header__search-btn"
 					onClick={(e) => (e.preventDefault(), handleSearchChange(searchQuery))}></button>
 			</form>
+
+			<button className="change-theme-btn" onClick={() => setIsDark(!isDark)}>
+				{isDark ? '🌚' : '🌞'}
+			</button>
 		</div>
 	);
 }

@@ -36,7 +36,7 @@ function Films() {
 
 	const sortedFilmsArray = sortedFilms.array;
 	const totalPages = sortedFilms.total;
-	console.log(totalPages);
+	// console.log(totalPages);
 
 	const filmsList = sortedFilmsArray.map((obj, index) => {
 		const isFavorite = favoritesIds.includes(obj.id);
