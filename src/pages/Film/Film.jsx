@@ -91,10 +91,18 @@ export default function Film() {
 								forceToAxis: true,
 								sensitivity: 1,
 							}}>
-							<SwiperSlide>Slide 1</SwiperSlide>
-							<SwiperSlide>Slide 2</SwiperSlide>
-							<SwiperSlide>Slide 3</SwiperSlide>
-							<SwiperSlide>Slide 4</SwiperSlide>
+							<SwiperSlide>
+								<h3>Movie title:</h3>
+								<h2>{film.title}</h2>
+							</SwiperSlide>
+							<SwiperSlide>
+								<h3>Movie genre:</h3>
+								<h2>{film.genre}</h2>
+							</SwiperSlide>
+							<SwiperSlide>
+								<h3>Movie description:</h3>
+								<p>{film.description}</p>
+							</SwiperSlide>
 						</Swiper>
 
 						<div className="slide-controls">

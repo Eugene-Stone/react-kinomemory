@@ -88,10 +88,35 @@
 .slider--swiper {
 	// width: 300px;
 	position: relative;
-	text-align: center;
+	// text-align: center;
 
 	.swiper-wrapper {
 		padding: 30px 0;
+	}
+
+	.swiper-pagination {
+		text-align: left;
+	}
+	.swiper-slide {
+		padding: 0 50px 0 0;
+		min-height: 120px;
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+	.swiper-button-next {
+		margin-top: -50px;
+	}
+	.swiper-button-prev {
+		margin-top: 20px;
+	}
+	.swiper-button-prev {
+		left: auto;
+		right: 0;
 	}
 
 	.swiper-scrollbar {
