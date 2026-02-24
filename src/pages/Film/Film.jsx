@@ -1,6 +1,18 @@
 import { useParams, useOutletContext } from 'react-router-dom';
-import './Film.scss';
 import FilmPageSkeleton from './FilmPageSkeleton';
+
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from 'swiper/modules';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+import './Film.scss';
 
 export default function Film() {
 	const { id } = useParams();
@@ -54,6 +66,47 @@ export default function Film() {
 					<div className="rating">{film.rating}</div>
 					<div className="genre">{film.genre}</div>
 					<div className="description">{film.description}</div>
+
+					<br />
+					<br />
+					<br />
+
+					<div className="slider--swiper">
+						<Swiper
+							modules={[Navigation, Pagination, Scrollbar, Mousewheel]}
+							spaceBetween={0}
+							slidesPerView={1}
+							loop={true}
+							scrollbar={{ draggable: true }}
+							navigation={{
+								prevEl: '.swiper-button-prev',
+								nextEl: '.swiper-button-next',
+							}}
+							pagination={{
+								el: '.swiper-pagination',
+								clickable: true,
+							}}
+							mousewheel={{
+								enabled: true,
+								forceToAxis: true,
+								sensitivity: 1,
+							}}>
+							<SwiperSlide>Slide 1</SwiperSlide>
+							<SwiperSlide>Slide 2</SwiperSlide>
+							<SwiperSlide>Slide 3</SwiperSlide>
+							<SwiperSlide>Slide 4</SwiperSlide>
+						</Swiper>
+
+						<div className="slide-controls">
+							<div className="slider-pagination">
+								<div className="swiper-pagination"></div>
+							</div>
+							<div className="slider-navigation">
+								<div className="swiper-button-prev"></div>
+								<div className="swiper-button-next"></div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 		</>

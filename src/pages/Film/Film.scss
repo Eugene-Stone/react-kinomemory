@@ -50,6 +50,7 @@
 	}
 
 	.film__content {
+		min-width: 0;
 		.title {
 			font-size: 3rem;
 			margin: 0 0 1rem 0;
@@ -81,6 +82,20 @@
 			line-height: 1.6;
 			color: #ebedf0;
 		}
+	}
+}
+
+.slider--swiper {
+	// width: 300px;
+	position: relative;
+	text-align: center;
+
+	.swiper-wrapper {
+		padding: 30px 0;
+	}
+
+	.swiper-scrollbar {
+		bottom: 0;
 	}
 }
 

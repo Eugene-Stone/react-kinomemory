@@ -2,23 +2,23 @@ import React from 'react';
 
 export default function Privacy() {
 	return (
-		<section class="info">
-			<div class="container">
-				<h1 class="info__title">About Project</h1>
+		<section className="info">
+			<div className="container">
+				<h1 className="info__title">About Project</h1>
 
-				<p class="info__text">
+				<p className="info__text">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
 					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 					nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 				</p>
 
-				<p class="info__text">
+				<p className="info__text">
 					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
 					fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 					culpa qui officia deserunt mollit anim id est laborum.
 				</p>
 
-				<p class="info__text">
+				<p className="info__text">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
 					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -29,7 +29,7 @@ export default function Privacy() {
 					nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 				</p>
 
-				<p class="info__text">
+				<p className="info__text">
 					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
 					fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 					culpa qui officia deserunt mollit anim id est laborum. culpa qui officia
@@ -37,7 +37,7 @@ export default function Privacy() {
 					est laborum.
 				</p>
 
-				{/* <a href="#" class="info__button">Learn More</a> */}
+				{/* <a href="#" className="info__button">Learn More</a> */}
 			</div>
 		</section>
 	);
