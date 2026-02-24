@@ -1,11 +1,13 @@
-import { createPortal, useEffect } from 'react-dom';
+import { createPortal } from 'react-dom';
+import { useModalContext } from '../../context/ModalContext/useModalContext.js';
+import './Modal.scss';
 
-import './GlobalModal.scss';
+export default function Modal() {
+	const modal = useModalContext();
 
-export default function GlobalModal({ modal }) {
 	if (!modal.isOpen) return null;
 
-	const modalRoot = document.getElementById('globalmodal-root');
+	const modalRoot = document.getElementById('modal-root');
 
 	return createPortal(
 		<div className="overlay" onClick={modal.close}>

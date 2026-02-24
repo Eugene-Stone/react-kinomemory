@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { createContext, useState, useEffect } from 'react';
 
-export function useGlobalModal() {
+const ModalContext = createContext(null);
+
+export function ModalProvider({ children }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [content, setContent] = useState(null);
 
@@ -23,5 +25,11 @@ export function useGlobalModal() {
 		setContent(null);
 	}
 
-	return { isOpen, open, close, content };
+	return (
+		<ModalContext.Provider value={{ isOpen, open, close, content }}>
+			{children}
+		</ModalContext.Provider>
+	);
 }
+
+export { ModalContext };

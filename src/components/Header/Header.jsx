@@ -1,5 +1,5 @@
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { useThemeContext } from '../../context/useThemeContext';
+import { useThemeContext } from '../../context/ThemeContext/useThemeContext';
 import './Header.scss';
 
 export default function Header({ searchQuery, setSearchQuery }) {
@@ -16,7 +16,7 @@ export default function Header({ searchQuery, setSearchQuery }) {
 			navigate('/');
 		}
 	}
-	console.log(isDark);
+	// console.log(isDark);
 
 	return (
 		<div className="header">
