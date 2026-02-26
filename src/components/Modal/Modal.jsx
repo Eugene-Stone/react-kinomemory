@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useModalContext } from '../../context/ModalContext/useModalContext.js';
 import './Modal.scss';
@@ -5,6 +6,22 @@ import './Modal.scss';
 export default function Modal() {
 	// const modal = useModalContext();
 	const { isOpen, close, content } = useModalContext();
+
+	useEffect(() => {
+		if (!isOpen) return;
+
+		function handleKeyDown(e) {
+			if (e.key === 'Escape') {
+				close();
+			}
+		}
+
+		window.addEventListener('keydown', handleKeyDown);
+
+		return () => {
+			window.removeEventListener('keydown', handleKeyDown);
+		};
+	}, [isOpen, close]);
 
 	if (!isOpen) return null;
 
