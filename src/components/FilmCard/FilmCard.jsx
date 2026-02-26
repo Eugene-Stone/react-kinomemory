@@ -26,8 +26,6 @@ export default function FilmCard({ film, isFavorite, handleFavorite, loading }) 
 				<img src={film.poster} alt={film.title} width="300" height="450" />
 			</Link>
 
-			{/* <button onClick={() => handleFavorite(film.id)}>Add Favorite</button> */}
-
 			{isFavorite ? (
 				<button
 					className="btn btn--remove-favorite"
@@ -41,6 +39,16 @@ export default function FilmCard({ film, isFavorite, handleFavorite, loading }) 
 			)}
 
 			<button onClick={() => modal.open(getModalContent(film))}>Open Brief</button>
+			{/* <button
+					onClick={() =>
+						modal.open({
+							type: 'FILM_PREVIEW',
+							payload: film,
+						})
+					}>
+					Open Brief with type
+				</button> */}
+
 			<div className="rate">{film.rating}</div>
 			<div className="title">
 				<Link to={`/films/film${film.id}`}>{film.title}</Link>
