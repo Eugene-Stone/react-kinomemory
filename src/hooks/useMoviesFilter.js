@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 
-export function useMoviesFilter(films, favorites, searchQueryDebounce) {
+export function useMoviesFilter(films, favorites, searchQuery) {
 	const [onlyFavorites, setOnlyFavorites] = useState(false);
 	const [ratingOverNine, setRatingOverNine] = useState(false);
 	const [genre, setGenre] = useState("All genre");
@@ -41,12 +41,10 @@ export function useMoviesFilter(films, favorites, searchQueryDebounce) {
 				(film) => film.genre.toLowerCase() === genre.toLowerCase(),
 			);
 		}
-		// console.log(searchQueryDebounce);
-		if (searchQueryDebounce !== "") {
+		console.log(searchQuery);
+		if (searchQuery !== "") {
 			copyArray = copyArray.filter((film) =>
-				film.title
-					.toLowerCase()
-					.includes(searchQueryDebounce.toLowerCase()),
+				film.title.toLowerCase().includes(searchQuery.toLowerCase()),
 			);
 		}
 
@@ -88,10 +86,9 @@ export function useMoviesFilter(films, favorites, searchQueryDebounce) {
 		onlyFavorites,
 		ratingOverNine,
 		genre,
-		searchQueryDebounce,
+		searchQuery,
 		currentPage,
 	]);
-	
 
 	return {
 		sortType,
@@ -107,6 +104,6 @@ export function useMoviesFilter(films, favorites, searchQueryDebounce) {
 		genreList,
 		currentPage,
 		setCurrentPage,
-		limitPerPage
+		limitPerPage,
 	};
 }

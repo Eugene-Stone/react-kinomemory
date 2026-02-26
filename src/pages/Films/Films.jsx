@@ -11,9 +11,6 @@ import './Films.scss';
 
 function Films() {
 	const {
-		searchQuery,
-		films,
-		favorites,
 		loading,
 		error,
 		addToFavorites,
