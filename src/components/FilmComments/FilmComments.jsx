@@ -3,6 +3,8 @@ import { lazy, Suspense } from 'react';
 import FilmCommentSkeleton from './FilmCommentSkeleton';
 const LazyFilmComment = lazy(() => import('./FilmComment'));
 
+import './FilmComments.scss';
+
 export default function FilmComments({ film }) {
 	const commentsList = film.comments.map((comment) => (
 		<Suspense key={comment.userId} fallback={<FilmCommentSkeleton />}>

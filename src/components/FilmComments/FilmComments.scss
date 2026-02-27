@@ -1,0 +1,72 @@
+
+
+
+.comments {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+
+  li {
+    background-color: #1a1d23;
+    border: 1px solid #343a46;
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-areas: 
+      "user date"
+      "text text";
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: #4b5563;
+    }
+
+    .user {
+      grid-area: user;
+      font-weight: bold;
+      color: #61dafb;
+      font-size: 1rem;
+    }
+
+    .date {
+      grid-area: date;
+      color: #768390;
+      font-size: 0.85rem;
+      align-self: center;
+    }
+
+    .text {
+      grid-area: text;
+      color: #ebedf0;
+      line-height: 1.5;
+      font-size: 1rem;
+      padding-top: 8px;
+      border-top: 1px solid rgba(68, 76, 86, 0.5);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .comments {
+    li {
+      padding: 1rem;
+      grid-template-areas: 
+        "user"
+        "date"
+        "text";
+      grid-template-columns: 1fr;
+      gap: 8px;
+
+      .date {
+        justify-self: flex-start;
+        margin-bottom: 4px;
+      }
+    }
+  }
+}

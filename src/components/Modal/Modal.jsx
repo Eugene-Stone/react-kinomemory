@@ -1,6 +1,9 @@
 import { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useModalContext } from '../../context/ModalContext/useModalContext.js';
+
+import FilmModal from '../../components/FilmCard/FilmModal';
+
 import './Modal.scss';
 
 export default function Modal() {
@@ -27,30 +30,30 @@ export default function Modal() {
 
 	const modalRoot = document.getElementById('modal-root');
 
-	// let ModalTypeContent = null;
+	let ModalTypeContent = null;
+	switch (content.type) {
+		case 'FILM_PREVIEW':
+			ModalTypeContent = <FilmModal film={content.payload} />;
+			break;
 
-	// switch (content.type) {
-	// 	case 'FILM_PREVIEW':
-	// 		ModalTypeContent = <FilmPreview film={content.payload} />;
-	// 		break;
+		// case 'CONFIRM_DELETE':
+		// 	ModalTypeContent = <ConfirmDelete {...content.payload} />;
+		// 	break;
 
-	// 	case 'CONFIRM_DELETE':
-	// 		ModalTypeContent = <ConfirmDelete {...content.payload} />;
-	// 		break;
+		// case 'LOGIN':
+		// 	ModalTypeContent = <LoginForm />;
+		// 	break;
 
-	// 	case 'LOGIN':
-	// 		ModalTypeContent = <LoginForm />;
-	// 		break;
-
-	// 	default:
-	// 		ModalTypeContent = null;
-	// }
+		default:
+			ModalTypeContent = 'Empty modal';
+	}
 
 	return createPortal(
 		<div className="overlay" onClick={close}>
 			<div className="modal" onClick={(e) => e.stopPropagation()}>
 				<button onClick={close}>X</button>
-				{content}
+				{/* {content} */}
+				{ModalTypeContent}
 			</div>
 		</div>,
 		modalRoot,

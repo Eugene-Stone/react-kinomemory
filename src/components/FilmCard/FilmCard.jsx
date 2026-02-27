@@ -38,16 +38,16 @@ export default function FilmCard({ film, isFavorite, handleFavorite, loading }) 
 				</button>
 			)}
 
-			<button onClick={() => modal.open(getModalContent(film))}>Open Brief</button>
-			{/* <button
-					onClick={() =>
-						modal.open({
-							type: 'FILM_PREVIEW',
-							payload: film,
-						})
-					}>
-					Open Brief with type
-				</button> */}
+			{/* <button onClick={() => modal.open(getModalContent(film))}>Open Brief</button> */}
+			<button
+				onClick={() =>
+					modal.open({
+						type: 'FILM_PREVIEW',
+						payload: film,
+					})
+				}>
+				Open Brief with type
+			</button>
 
 			<div className="rate">{film.rating}</div>
 			<div className="title">
