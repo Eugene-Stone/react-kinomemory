@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useModalContext } from '../../context/ModalContext/useModalContext';
+import { useModalContext } from '@/context/ModalContext/useModalContext';
 import './FilmCard.scss';
 
 export default function FilmCard({ film, isFavorite, handleFavorite, loading }) {

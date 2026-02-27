@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { useMovies } from './hooks/useMovies';
-import { useMoviesFilter } from './hooks/useMoviesFilter';
-// import { useDebounce } from './hooks/useDebounce';
+import { useMovies } from '@/hooks/useMovies';
+import { useMoviesFilter } from '@/hooks/useMoviesFilter';
+// import { useDebounce } from '@/hooks/useDebounce';
 
-import Header from './components/Header/Header';
-import Modal from './components/Modal/Modal';
+import Header from '@/components/Header/Header';
+import Modal from '@/components/Modal/Modal';
 
 export default function Layout() {
 	const [searchQuery, setSearchQuery] = useState('');

@@ -1,11 +1,11 @@
 import { useOutletContext } from 'react-router-dom';
-// import { useMovies } from '../../hooks/useMovies';
-// import { useMoviesFilter } from '../../hooks/useMoviesFilter';
-// import { useDebounce } from '../../hooks/useDebounce';
-import FilmCard from '../../components/FilmCard/FilmCard';
-import FilmsFilters from '../../components/FilmsFilters/FilmsFilters';
-import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
-import FilmsPagination from '../../components/FilmsPagination/FilmsPagination';
+// import { useMovies } from '@/hooks/useMovies';
+// import { useMoviesFilter } from '@/hooks/useMoviesFilter';
+// import { useDebounce } from '@/hooks/useDebounce';
+import FilmCard from '@/components/FilmCard/FilmCard';
+import FilmsFilters from '@/components/FilmsFilters/FilmsFilters';
+import FilmCardSkeleton from '@/components/FilmCard/FilmCardSkeleton';
+import FilmsPagination from '@/components/FilmsPagination/FilmsPagination';
 
 import './Films.scss';
 

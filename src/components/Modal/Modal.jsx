@@ -1,8 +1,8 @@
 import { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useModalContext } from '../../context/ModalContext/useModalContext.js';
+import { useModalContext } from '@/context/ModalContext/useModalContext.js';
 
-import FilmModal from '../../components/FilmCard/FilmModal';
+import FilmModal from '@/components/FilmCard/FilmModal';
 
 import './Modal.scss';
 

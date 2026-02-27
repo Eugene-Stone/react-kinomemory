@@ -1,6 +1,6 @@
 import { useParams, useOutletContext } from 'react-router-dom';
 import FilmPageSkeleton from './FilmPageSkeleton';
-import FilmComments from '../../components/FilmComments/FilmComments';
+import FilmComments from '@/components/FilmComments/FilmComments';
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from 'swiper/modules';

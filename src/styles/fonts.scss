@@ -2,7 +2,7 @@
 
 // FONT 1
 $font_1: 'GoodTimes';
-$fontURL_1: '../assets/fonts/GoodTimes/';
+$fontURL_1: '@/assets/fonts/GoodTimes/';
 
 @mixin font_normal_1 {
 	font-family: $font_1;
