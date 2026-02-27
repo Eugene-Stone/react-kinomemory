@@ -1,11 +1,10 @@
 import { useParams, useOutletContext } from 'react-router-dom';
 import FilmPageSkeleton from './FilmPageSkeleton';
+import FilmComments from '../../components/FilmComments/FilmComments';
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from 'swiper/modules';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -24,8 +23,6 @@ export default function Film() {
 	if (!film) {
 		return <FilmPageSkeleton />;
 	}
-
-	// console.log(film.title);
 
 	return (
 		<>
@@ -66,6 +63,8 @@ export default function Film() {
 					<div className="rating">{film.rating}</div>
 					<div className="genre">{film.genre}</div>
 					<div className="description">{film.description}</div>
+
+					<FilmComments film={film} />
 
 					<br />
 					<br />
