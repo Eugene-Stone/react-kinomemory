@@ -11,6 +11,10 @@ export default function Profile() {
 
 	const { films, removeFromFavorites, favoritesIds } = useOutletContext();
 
+	const notFavoriteFilms = films.filter((film) => !favoritesIds.includes(film.id));
+	// eslint-disable-next-line
+	const randomFilm = notFavoriteFilms[Math.floor(Math.random() * notFavoriteFilms.length)];
+
 	return user === null ? (
 		<section className="cabinet-section">
 			<div className="cabinet-container">
@@ -65,10 +69,8 @@ export default function Profile() {
 						</div>
 					) : (
 						<>
-							<h2 className="cabinet-subtitle">You might like it</h2>
-
-							{/* <FilmCard /> */}
-							<FilmCardSkeleton />
+							<h2 className="cabinet-title">You might like it</h2>
+							{randomFilm && <FilmCard film={randomFilm} />}
 						</>
 					)}
 				</aside>

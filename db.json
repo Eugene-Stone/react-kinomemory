@@ -1225,6 +1225,16 @@
       "id": "3d5b",
       "movieId": "26",
       "userId": "2"
+    },
+    {
+      "id": "a749",
+      "movieId": "1",
+      "userId": "3"
+    },
+    {
+      "id": "c10f",
+      "movieId": "2",
+      "userId": "3"
     }
   ]
 }
