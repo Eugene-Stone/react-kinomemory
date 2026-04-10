@@ -13,6 +13,15 @@ export function useMoviesFilter(films, favorites, searchQuery, user) {
 		return localStorage.getItem("sortType") || "alphabet";
 	});
 
+	const hasActiveFilters =
+		onlyFavorites || ratingOverNine || genre !== "All genre";
+
+	function filtersReset() {
+		setOnlyFavorites(false);
+		setRatingOverNine(false);
+		setGenre("All genre");
+	}
+
 	useEffect(() => {
 		localStorage.setItem("sortType", sortType);
 	}, [sortType]);
@@ -111,5 +120,7 @@ export function useMoviesFilter(films, favorites, searchQuery, user) {
 		currentPage,
 		setCurrentPage,
 		limitPerPage,
+		filtersReset,
+		hasActiveFilters,
 	};
 }

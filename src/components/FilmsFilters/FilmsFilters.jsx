@@ -10,6 +10,8 @@ export default function FilmsFilters({
 	setGenre,
 	genreList,
 	setCurrentPage,
+	filtersReset,
+	hasActiveFilters,
 }) {
 	const { user } = useAuth();
 
@@ -34,11 +36,13 @@ export default function FilmsFilters({
 					</button>
 				</li>
 
-				<li>
-					<button className={`btn films__filter-reset`} onClick={''}>
-						Filters reset
-					</button>
-				</li>
+				{hasActiveFilters && (
+					<li>
+						<button className={`btn films__filter-reset`} onClick={filtersReset}>
+							Filters reset
+						</button>
+					</li>
+				)}
 			</ul>
 
 			<div className="select">

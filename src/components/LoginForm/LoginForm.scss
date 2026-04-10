@@ -115,6 +115,25 @@
   border-color: #ffffff;
 }
 
+.login-form {
+	.success,
+	.error {
+		text-align: center;
+	}
+}
+
+.success {
+	color: green;
+}
+.error {
+	color: red;
+}
+
+
+
+
+
+
 /* Media MAX --------------------------------------------- */
 @media (max-width: 576px) {
   .login-box {

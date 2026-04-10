@@ -26,6 +26,8 @@ function Films() {
 		currentPage,
 		setCurrentPage,
 		limitPerPage,
+		filtersReset,
+		hasActiveFilters,
 	} = useOutletContext();
 
 	const sortedFilmsArray = sortedFilms.array;
@@ -88,6 +90,8 @@ function Films() {
 					setGenre={setGenre}
 					genreList={genreList}
 					setCurrentPage={setCurrentPage}
+					filtersReset={filtersReset}
+					hasActiveFilters={hasActiveFilters}
 				/>
 
 				{loading ? (
