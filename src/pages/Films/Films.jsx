@@ -1,7 +1,4 @@
 import { useOutletContext } from 'react-router-dom';
-// import { useMovies } from '@/hooks/useMovies';
-// import { useMoviesFilter } from '@/hooks/useMoviesFilter';
-// import { useDebounce } from '@/hooks/useDebounce';
 import FilmCard from '@/components/FilmCard/FilmCard';
 import FilmsFilters from '@/components/FilmsFilters/FilmsFilters';
 import FilmCardSkeleton from '@/components/FilmCard/FilmCardSkeleton';
@@ -33,10 +30,10 @@ function Films() {
 
 	const sortedFilmsArray = sortedFilms.array;
 	const totalPages = sortedFilms.total;
-	// console.log(totalPages);
 
 	const filmsList = sortedFilmsArray.map((obj, index) => {
 		const isFavorite = favoritesIds.includes(obj.id);
+		console.log(isFavorite);
 
 		return (
 			<FilmCard

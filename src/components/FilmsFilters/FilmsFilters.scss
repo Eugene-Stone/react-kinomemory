@@ -9,6 +9,8 @@
 	h1 {
 		margin: 0 !important;
 	}
+
+
 }
 
 .select {
@@ -41,6 +43,21 @@
 		option {
 			background-color: #2d333b;
 			color: #ffffff;
+		}
+	}
+}
+
+.films__filter-box {
+	.btn {
+		&.films__filter-reset {
+			background-color: rgba(255, 107, 107, 0.1);
+			color: #ff6b67;
+			border-color: rgba(255, 107, 107, 0.3);
+			&:hover {
+				background-color: #ff6b67;
+				color: #ffffff;
+				border-color: #ff6b67;
+			}
 		}
 	}
 }

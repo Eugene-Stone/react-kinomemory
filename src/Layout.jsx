@@ -3,6 +3,8 @@ import { Outlet } from 'react-router-dom';
 
 import { useMovies } from '@/hooks/useMovies';
 import { useMoviesFilter } from '@/hooks/useMoviesFilter';
+import useAuth from './context/AuthContext/useAuth';
+
 // import { useDebounce } from '@/hooks/useDebounce';
 
 import Header from '@/components/Header/Header';
@@ -11,6 +13,7 @@ import Modal from '@/components/Modal/Modal';
 export default function Layout() {
 	const [searchQuery, setSearchQuery] = useState('');
 	const moviesData = useMovies();
+	const { user } = useAuth();
 
 	// const searchQueryDebounce = useDebounce(searchQuery, 700);
 
@@ -18,7 +21,7 @@ export default function Layout() {
 		moviesData.films,
 		moviesData.favorites,
 		searchQuery,
-		// searchQueryDebounce,
+		user,
 	);
 
 	return (

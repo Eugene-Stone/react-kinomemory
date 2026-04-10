@@ -18,9 +18,7 @@ export default function Header({ searchQuery, setSearchQuery, films }) {
 
 	const modal = useModalContext();
 
-	const { user } = useAuth();
-
-	console.log(user);
+	const { user, logout } = useAuth();
 
 	// const inputRef = useRef(null);
 
@@ -149,9 +147,15 @@ export default function Header({ searchQuery, setSearchQuery, films }) {
 					👤
 				</button>
 			) : (
-				<Link className="profile-link" to={'/profile'}>
-					👤
-				</Link>
+				<div className="profile-dropdown">
+					<Link className="profile-link" to={'/profile'}>
+						👤 <span className="login-label">🟢</span>
+					</Link>
+
+					<button type="button" onClick={logout} className="btn-logout">
+						Выйти
+					</button>
+				</div>
 			)}
 
 			<button className="change-theme-btn" onClick={() => setIsDark(!isDark)}>

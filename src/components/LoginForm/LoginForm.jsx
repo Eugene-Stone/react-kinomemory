@@ -17,6 +17,10 @@ export default function LoginForm() {
 		formState: { errors, isValid },
 	} = useForm({
 		mode: 'onChange',
+		defaultValues: {
+			login: 'user',
+			password: 'qwerty',
+		},
 	});
 
 	// console.log(login);

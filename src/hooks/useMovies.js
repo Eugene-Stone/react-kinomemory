@@ -6,80 +6,6 @@ export function useMovies() {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	// // Getting a list of movies
-	// useEffect(() => {
-	// 	async function fetchFavorites() {
-	// 		try {
-	// 			setLoading(true);
-	// 			const response = await fetch(`http://localhost:3001/movies`);
-	// 			if (!response.ok) throw new Error("Ошибка загрузки");
-	// 			const data = await response.json();
-	// 			setFilms(data);
-	// 		} catch (err) {
-	// 			setError(err.message);
-	// 		} finally {
-	// 			setLoading(false);
-	// 		}
-	// 	}
-
-	// 	fetchFavorites();
-	// }, []);
-
-	// // Getting Favorites
-	// useEffect(() => {
-	// 	async function fetchFavorites() {
-	// 		try {
-	// 			setLoading(true);
-	// 			const response = await fetch(`http://localhost:3001/favorites`);
-	// 			if (!response.ok) throw new Error("Ошибка загрузки");
-	// 			const data = await response.json();
-	// 			setFavorites(data);
-	// 		} catch (err) {
-	// 			setError(err.message);
-	// 		} finally {
-	// 			setLoading(false);
-	// 		}
-	// 	}
-
-	// 	fetchFavorites();
-	// }, []);
-
-	// Getting movies and a list of favorites
-	// useEffect(() => {
-	// 	async function fetchData() {
-	// 		try {
-	// 			setLoading(true);
-
-	// 			const results = await Promise.allSettled([
-	// 			fetch('http://localhost:3001/movies'),
-	// 			fetch('http://localhost:3001/favorites'),
-	// 			]);
-
-	// 			const moviesResult = results[0];
-	// 			const favoritesResult = results[1];
-
-	// 			if (moviesResult.status === 'fulfilled') {
-	// 			const moviesData = await moviesResult.value.json();
-	// 			setFilms(moviesData);
-	// 			}
-
-	// 			if (favoritesResult.status === 'fulfilled') {
-	// 			const favoritesData = await favoritesResult.value.json();
-	// 			setFavorites(favoritesData);
-	// 			} else {
-	// 			setFavorites([]); // если избранное не загрузилось
-	// 			}
-
-	// 		} catch (err) {
-	// 			setError('Критическая ошибка загрузки');
-	// 		} finally {
-	// 			setLoading(false);
-	// 		}
-	// 	}
-
-	// 	fetchData();
-	// }, []);
-
 	// Getting movies and a list of favorites
 	useEffect(() => {
 		async function fetchData() {
@@ -111,10 +37,12 @@ export function useMovies() {
 	}, []);
 
 	// Add to favorites
-	async function addToFavorites(movieId) {
+	async function addToFavorites(movieId, userId) {
 		console.log(movieId);
 
-		const alreadyAdded = favorites.find((film) => film.movieId === movieId);
+		const alreadyAdded = favorites.find(
+			(film) => film.movieId === movieId && film.userId === userId,
+		);
 
 		if (alreadyAdded) {
 			return;
@@ -126,7 +54,7 @@ export function useMovies() {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ movieId }),
+				body: JSON.stringify({ movieId, userId }),
 			});
 
 			if (!response.ok) throw new Error("Error adding");
@@ -139,10 +67,12 @@ export function useMovies() {
 	}
 
 	// Removing Favorites
-	async function removeFromFavorites(movieId) {
+	async function removeFromFavorites(movieId, userId) {
 		console.log(movieId);
 
-		const favoriteItem = favorites.find((film) => film.movieId === movieId);
+		const favoriteItem = favorites.find(
+			(film) => film.movieId === movieId && film.userId === userId,
+		);
 
 		if (!favoriteItem) return;
 

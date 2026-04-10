@@ -1,4 +1,5 @@
 import './FilmsFilters.scss';
+import useAuth from '../../context/AuthContext/useAuth';
 
 export default function FilmsFilters({
 	onlyFavorites,
@@ -10,21 +11,32 @@ export default function FilmsFilters({
 	genreList,
 	setCurrentPage,
 }) {
+	const { user } = useAuth();
+
 	return (
 		<div className="films__filter-box">
 			<ul className="films__filter">
-				<li className="films__filter-item">
-					<button
-						className={`btn films__filter-btn ${onlyFavorites && 'active'}`}
-						onClick={() => (setOnlyFavorites((prev) => !prev), setCurrentPage(1))}>
-						Only favorites
-					</button>
-				</li>
+				{user !== null && (
+					<li className="films__filter-item">
+						<button
+							className={`btn films__filter-btn ${onlyFavorites && 'active'}`}
+							onClick={() => (setOnlyFavorites((prev) => !prev), setCurrentPage(1))}>
+							Only favorites
+						</button>
+					</li>
+				)}
+
 				<li>
 					<button
 						className={`btn films__filter-btn ${ratingOverNine && 'active'}`}
 						onClick={() => (setRatingOverNine((prev) => !prev), setCurrentPage(1))}>
 						Rating over 9
+					</button>
+				</li>
+
+				<li>
+					<button className={`btn films__filter-reset`} onClick={''}>
+						Filters reset
 					</button>
 				</li>
 			</ul>

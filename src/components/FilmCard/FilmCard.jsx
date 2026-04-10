@@ -33,13 +33,13 @@ export default function FilmCard({ film, isFavorite, handleFavorite, loading }) 
 				(isFavorite ? (
 					<button
 						className="btn btn--remove-favorite"
-						onClick={() => handleFavorite(film.id)}>
+						onClick={() => handleFavorite(film.id, user.id)}>
 						Remove Favorite
 					</button>
 				) : (
 					<button
 						className="btn btn--add-favorite"
-						onClick={() => handleFavorite(film.id)}>
+						onClick={() => handleFavorite(film.id, user.id)}>
 						Add Favorite
 					</button>
 				))}

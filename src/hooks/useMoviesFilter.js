@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 
-export function useMoviesFilter(films, favorites, searchQuery) {
+export function useMoviesFilter(films, favorites, searchQuery, user) {
 	const [onlyFavorites, setOnlyFavorites] = useState(false);
 	const [ratingOverNine, setRatingOverNine] = useState(false);
 	const [genre, setGenre] = useState("All genre");
@@ -21,7 +21,13 @@ export function useMoviesFilter(films, favorites, searchQuery) {
 	// Собираем жанры пропуская дубликаты
 	const genreList = [...new Set(films.map((film) => film.genre))];
 
-	const favoritesIds = favorites.map((f) => f.movieId);
+	// const favoritesIds = favorites.map((f) => f.movieId);
+
+	const favoritesIds = useMemo(()=>{
+		if (!user || !favorites) return [];
+
+		return favorites.filter((f) => f.userId === user.id).map((f)=> f.movieId)
+	}, [favorites, user])
 
 	const sortedFilms = useMemo(() => {
 		let copyArray = [...films];

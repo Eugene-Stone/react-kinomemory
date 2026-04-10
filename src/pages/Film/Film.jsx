@@ -1,6 +1,7 @@
 import { useParams, useOutletContext } from 'react-router-dom';
 import FilmPageSkeleton from './FilmPageSkeleton';
 import FilmComments from '@/components/FilmComments/FilmComments';
+import useAuth from '../../context/AuthContext/useAuth';
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y, Mousewheel } from 'swiper/modules';
@@ -17,6 +18,7 @@ export default function Film() {
 	const { id } = useParams();
 	const { films, favoritesIds, addToFavorites, removeFromFavorites } = useOutletContext();
 	const isFavorite = favoritesIds.includes(id);
+	const { user } = useAuth();
 
 	const film = films.find((f) => Number(f.id) === Number(id));
 
@@ -39,25 +41,26 @@ export default function Film() {
 				</div>
 
 				<div className="film__content">
-					{isFavorite ? (
-						<>
-							<span className="heart">❤️</span>
-							<button
-								className="btn btn--remove-favorite"
-								onClick={() => removeFromFavorites(id)}>
-								Remove from Favorite
-							</button>
-						</>
-					) : (
-						<>
-							<span className="heart">🤍</span>
-							<button
-								className="btn btn--add-favorite"
-								onClick={() => addToFavorites(id)}>
-								Add to Favorite
-							</button>
-						</>
-					)}
+					{user !== null &&
+						(isFavorite ? (
+							<>
+								<span className="heart">❤️</span>
+								<button
+									className="btn btn--remove-favorite"
+									onClick={() => removeFromFavorites(id, user.id)}>
+									Remove from Favorite
+								</button>
+							</>
+						) : (
+							<>
+								<span className="heart">🤍</span>
+								<button
+									className="btn btn--add-favorite"
+									onClick={() => addToFavorites(id, user.id)}>
+									Add to Favorite
+								</button>
+							</>
+						))}
 
 					<h1 className="title">{film.title}</h1>
 					<div className="rating">{film.rating}</div>
