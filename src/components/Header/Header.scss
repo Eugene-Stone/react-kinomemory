@@ -15,7 +15,9 @@ body.light {
 	border-bottom: 1px solid #343a46;
 	margin: 0 auto 50px;
 
-	.change-theme-btn {
+	.change-theme-btn,
+	.login-btn,
+	.profile-link {
 		appearance: none;
 		border: none;
 		background-color: transparent;
@@ -25,7 +27,14 @@ body.light {
 		line-height: 1;
 		margin-bottom: -2px;
 		margin-left: 20px;
+		text-decoration: none;
 	}
+
+	.login-btn,
+	.profile-link {
+		font-size: 30px;
+	}
+
 
 	nav {
 		display: flex;

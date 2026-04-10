@@ -4,6 +4,10 @@ import { useThemeContext } from '@/context/ThemeContext/useThemeContext';
 import { useDebounce } from '@/hooks/useDebounce.js';
 import './Header.scss';
 
+import useAuth from '../../context/AuthContext/useAuth';
+
+import { useModalContext } from '@/context/ModalContext/useModalContext';
+
 export default function Header({ searchQuery, setSearchQuery, films }) {
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -11,6 +15,12 @@ export default function Header({ searchQuery, setSearchQuery, films }) {
 	const [searchValue, setSearchValue] = useState('');
 	const searchQueryDebounce = useDebounce(searchValue, 500);
 	const [isFocused, setIsFocused] = useState(false);
+
+	const modal = useModalContext();
+
+	const { user } = useAuth();
+
+	console.log(user);
 
 	// const inputRef = useRef(null);
 
@@ -126,6 +136,23 @@ export default function Header({ searchQuery, setSearchQuery, films }) {
 					''
 				)}
 			</form>
+
+			{user === null ? (
+				<button
+					className="login-btn"
+					onClick={() =>
+						modal.open({
+							type: 'LOGIN',
+							// payload: authForm,
+						})
+					}>
+					👤
+				</button>
+			) : (
+				<Link className="profile-link" to={'/profile'}>
+					👤
+				</Link>
+			)}
 
 			<button className="change-theme-btn" onClick={() => setIsDark(!isDark)}>
 				{isDark ? '🌚' : '🌞'}

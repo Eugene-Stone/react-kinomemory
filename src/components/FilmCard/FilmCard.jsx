@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useModalContext } from '@/context/ModalContext/useModalContext';
 import './FilmCard.scss';
+import useAuth from '../../context/AuthContext/useAuth';
 
 export default function FilmCard({ film, isFavorite, handleFavorite, loading }) {
+	const { user } = useAuth();
+
 	const modal = useModalContext();
 	// Или напрямую
 	// const { open } = useModalContext();
@@ -26,17 +29,20 @@ export default function FilmCard({ film, isFavorite, handleFavorite, loading }) 
 				<img src={film.poster} alt={film.title} width="300" height="450" />
 			</Link>
 
-			{isFavorite ? (
-				<button
-					className="btn btn--remove-favorite"
-					onClick={() => handleFavorite(film.id)}>
-					Remove Favorite
-				</button>
-			) : (
-				<button className="btn btn--add-favorite" onClick={() => handleFavorite(film.id)}>
-					Add Favorite
-				</button>
-			)}
+			{user !== null &&
+				(isFavorite ? (
+					<button
+						className="btn btn--remove-favorite"
+						onClick={() => handleFavorite(film.id)}>
+						Remove Favorite
+					</button>
+				) : (
+					<button
+						className="btn btn--add-favorite"
+						onClick={() => handleFavorite(film.id)}>
+						Add Favorite
+					</button>
+				))}
 
 			{/* <button onClick={() => modal.open(getModalContent(film))}>Open Brief</button> */}
 			<button

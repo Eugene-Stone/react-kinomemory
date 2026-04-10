@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { useModalContext } from '@/context/ModalContext/useModalContext.js';
 
 import FilmModal from '@/components/FilmCard/FilmModal';
+import LoginForm from '@/components/LoginForm/LoginForm';
 
 import './Modal.scss';
 
@@ -40,9 +41,9 @@ export default function Modal() {
 		// 	ModalTypeContent = <ConfirmDelete {...content.payload} />;
 		// 	break;
 
-		// case 'LOGIN':
-		// 	ModalTypeContent = <LoginForm />;
-		// 	break;
+		case 'LOGIN':
+			ModalTypeContent = <LoginForm />;
+			break;
 
 		default:
 			ModalTypeContent = 'Empty modal';
@@ -51,7 +52,9 @@ export default function Modal() {
 	return createPortal(
 		<div className="overlay" onClick={close}>
 			<div className="modal" onClick={(e) => e.stopPropagation()}>
-				<button onClick={close}>X</button>
+				<button className="close" onClick={close}>
+					X
+				</button>
 				{/* {content} */}
 				{ModalTypeContent}
 			</div>
