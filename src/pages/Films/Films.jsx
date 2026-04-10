@@ -35,7 +35,6 @@ function Films() {
 
 	const filmsList = sortedFilmsArray.map((obj, index) => {
 		const isFavorite = favoritesIds.includes(obj.id);
-		console.log(isFavorite);
 
 		return (
 			<FilmCard

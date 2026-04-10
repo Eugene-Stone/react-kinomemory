@@ -1,15 +1,16 @@
-import React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import useAuth from '../../context/AuthContext/useAuth';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import { Link } from 'react-router-dom';
 import FilmCard from '../../components/FilmCard/FilmCard';
 import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
 import './Profile.scss';
 
 export default function Profile() {
 	const { user, logout } = useAuth();
-	console.log(logout);
 
-	console.log(user);
+	const { films, removeFromFavorites, favoritesIds } = useOutletContext();
+
 	return user === null ? (
 		<section className="cabinet-section">
 			<div className="cabinet-container">
@@ -22,7 +23,7 @@ export default function Profile() {
 				<aside className="cabinet-sidebar">
 					<div className="cabinet-navigation">
 						<button type="button" onClick={logout} className="btn-logout">
-							Выйти
+							Exit
 						</button>
 					</div>
 
@@ -64,7 +65,7 @@ export default function Profile() {
 						</div>
 					) : (
 						<>
-							<h2 className="cabinet-subtitle">возможно вам понравится</h2>
+							<h2 className="cabinet-subtitle">You might like it</h2>
 
 							{/* <FilmCard /> */}
 							<FilmCardSkeleton />
@@ -74,7 +75,7 @@ export default function Profile() {
 				<main className="cabinet-main">
 					{user.role === 'admin' ? (
 						<>
-							<h2 className="cabinet-title">Добавленные фильмы</h2>
+							<h2 className="cabinet-title">Added movies</h2>
 							<div className="favorites-grid">
 								<article className="favorite-card">
 									<div className="favorite-card__poster">
@@ -95,23 +96,40 @@ export default function Profile() {
 						</>
 					) : (
 						<>
-							<h2 className="cabinet-title">Избранные фильмы</h2>
+							<h2 className="cabinet-title">Favorite films</h2>
+
 							<div className="favorites-grid">
-								<article className="favorite-card">
-									<div className="favorite-card__poster">
-										<img
-											src="https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"
-											alt="Poster"
-										/>
-									</div>
-									<div className="favorite-card__content">
-										<h3 className="favorite-card__title">
-											The Shawshank Redemption
-										</h3>
-										<p className="favorite-card__genre">Drama • 9.3</p>
-										<button className="btn-remove">Удалить из списка</button>
-									</div>
-								</article>
+								{films
+									.filter((film) => favoritesIds.includes(film.id))
+									.map((film, index) => {
+										return (
+											<article key={film.id} className="favorite-card">
+												<Link
+													to={`/films/film/${film.id}`}
+													className="favorite-card__poster">
+													<img src={film.poster} alt="Poster" />
+												</Link>
+												<div className="favorite-card__content">
+													<h3 className="favorite-card__title">
+														<Link to={`/films/film/${film.id}`}>
+															{film.title}
+														</Link>
+													</h3>
+													<p className="favorite-card__genre">
+														{film.genre} • {film.rating}
+													</p>
+													<button
+														type="button"
+														onClick={() =>
+															removeFromFavorites(film.id, user.id)
+														}
+														className="btn-remove">
+														Remove film
+													</button>
+												</div>
+											</article>
+										);
+									})}
 							</div>
 						</>
 					)}

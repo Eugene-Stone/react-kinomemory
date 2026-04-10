@@ -132,6 +132,13 @@
 .favorite-card__poster {
 	width: 100px;
 	height: 150px;
+	&:hover {
+		~ .favorite-card__content {
+			.favorite-card__title {
+				color: #61dafb;
+			}
+		}
+	}
 }
 
 .favorite-card__poster img {
@@ -150,6 +157,9 @@
 .favorite-card__title {
 	margin: 0 0 8px 0;
 	font-size: 1.2rem;
+	a:not(:hover) {
+		text-decoration: none;
+	}
 }
 
 .favorite-card__genre {

@@ -37,21 +37,24 @@ body.light {
 			margin: 0;
 		}
 
-		.btn-logout {
+		.profile-dropdown__inner {
 			position: absolute;
 			left: 50%;
 			top: 100%;
 			transform: translateX(-50%);
 			display: none;
-			&:not(:hover) {
-				background-color: #23272F;
-			}
+			padding-top: 10px;
+			
 		}
 
 		&:hover {
-			.btn-logout  {
+			.profile-dropdown__inner  {
 				display: block;
 			}
+		}
+
+		.btn-logout:not(:hover) {
+			background-color: #23272F;
 		}
 	}
 	.login-btn,

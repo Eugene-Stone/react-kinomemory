@@ -152,9 +152,11 @@ export default function Header({ searchQuery, setSearchQuery, films }) {
 						👤 <span className="login-label">🟢</span>
 					</Link>
 
-					<button type="button" onClick={logout} className="btn-logout">
-						Выйти
-					</button>
+					<div className="profile-dropdown__inner">
+						<button type="button" onClick={logout} className="btn-logout">
+							Exit
+						</button>
+					</div>
 				</div>
 			)}
 
