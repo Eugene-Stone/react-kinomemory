@@ -96,7 +96,30 @@ export function useMovies() {
 		}
 	}
 
+	// Adding film
+	async function addFilm(user, dataFilm) {
+		const userId = user.id
+		const id = Date.now();
 
+		try {
+			const response = await fetch(`http://localhost:3001/movies`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ ...dataFilm, id, userId }),
+			});
+
+			if (!response.ok) throw new Error("Error adding");
+
+			const newMovie = await response.json();
+			setFilms((prev) => [...prev, newMovie]);
+			return true;
+		} catch (err) {
+			console.error(err);
+			return false;
+		}
+	}
 	
 	return {
 		films,
@@ -104,6 +127,7 @@ export function useMovies() {
 		loading,
 		error,
 		addToFavorites,
-		removeFromFavorites
+		removeFromFavorites,
+		addFilm,
 	};
 }

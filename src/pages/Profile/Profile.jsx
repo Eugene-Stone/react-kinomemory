@@ -3,8 +3,9 @@ import useAuth from '../../context/AuthContext/useAuth';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { Link } from 'react-router-dom';
 import FilmCard from '../../components/FilmCard/FilmCard';
-import FilmCardSkeleton from '../../components/FilmCard/FilmCardSkeleton';
+
 import './Profile.scss';
+import AddFilm from '../../components/AddFilm/AddFilm';
 
 export default function Profile() {
 	const { user, logout } = useAuth();
@@ -32,41 +33,7 @@ export default function Profile() {
 					</div>
 
 					{user.role === 'admin' ? (
-						<div className="admin-tools">
-							<h2 className="cabinet-subtitle">Добавить новый фильм</h2>
-							<form className="add-movie-form">
-								<div className="form-group">
-									<input type="text" placeholder="Title" required="" />
-								</div>
-								<div className="form-group">
-									<input
-										type="number"
-										step="0.1"
-										placeholder="Rating"
-										required=""
-									/>
-								</div>
-								<div className="form-group">
-									<input type="text" placeholder="Genre" required="" />
-								</div>
-								<div className="form-group">
-									<input type="url" placeholder="Poster URL" required="" />
-								</div>
-								<div className="form-group">
-									<input type="url" placeholder="Trailer URL" required="" />
-								</div>
-								<div className="form-group">
-									<textarea
-										placeholder="Description"
-										required=""
-										defaultValue={''}
-									/>
-								</div>
-								<button type="submit" className="btn-submit">
-									Опубликовать
-								</button>
-							</form>
-						</div>
+						<AddFilm />
 					) : (
 						<>
 							<h2 className="cabinet-title">You might like it</h2>
@@ -77,7 +44,7 @@ export default function Profile() {
 				<main className="cabinet-main">
 					{user.role === 'admin' ? (
 						<>
-							<h2 className="cabinet-title">Added movies</h2>
+							<h2 className="cabinet-title">Your added movies</h2>
 							<div className="favorites-grid">
 								<article className="favorite-card">
 									<div className="favorite-card__poster">

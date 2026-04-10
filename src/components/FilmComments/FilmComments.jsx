@@ -6,6 +6,10 @@ const LazyFilmComment = lazy(() => import('./FilmComment'));
 import './FilmComments.scss';
 
 export default function FilmComments({ film }) {
+	if (!film.comments) {
+		return <div>Comments not yet</div>;
+	}
+
 	const commentsList = film.comments.map((comment) => (
 		<Suspense key={comment.userId} fallback={<FilmCommentSkeleton />}>
 			<LazyFilmComment comment={comment} />
