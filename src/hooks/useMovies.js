@@ -98,8 +98,8 @@ export function useMovies() {
 
 	// Adding film
 	async function addFilm(user, dataFilm) {
-		const userId = user.id
-		const id = Date.now();
+		const userId = user.id;
+		const id = Date.now().toString();
 
 		try {
 			const response = await fetch(`http://localhost:3001/movies`, {
@@ -120,7 +120,26 @@ export function useMovies() {
 			return false;
 		}
 	}
-	
+
+	// Remove film
+	async function removeFilm(user, filmId) {
+		if (!user || user.role !== 'admin') return false;
+
+		try {
+			const response = await fetch(`http://localhost:3001/movies/${filmId}`, {
+				method: "DELETE",
+			});
+
+			if (!response.ok) throw new Error("Error remove");
+
+			setFilms((prev) => prev.filter((film) => film.id !== filmId));
+			return true;
+		} catch (err) {
+			console.error(err);
+			return false;
+		}
+	}
+
 	return {
 		films,
 		favorites,
@@ -129,5 +148,6 @@ export function useMovies() {
 		addToFavorites,
 		removeFromFavorites,
 		addFilm,
+		removeFilm,
 	};
 }

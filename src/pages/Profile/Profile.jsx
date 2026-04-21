@@ -1,7 +1,6 @@
-import { useOutletContext } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import useAuth from '../../context/AuthContext/useAuth';
 import LoginForm from '../../components/LoginForm/LoginForm';
-import { Link } from 'react-router-dom';
 import FilmCard from '../../components/FilmCard/FilmCard';
 
 import './Profile.scss';
@@ -10,7 +9,7 @@ import AddFilm from '../../components/AddFilm/AddFilm';
 export default function Profile() {
 	const { user, logout } = useAuth();
 
-	const { films, removeFromFavorites, favoritesIds } = useOutletContext();
+	const { films, removeFromFavorites, favoritesIds, removeFilm } = useOutletContext();
 
 	const notFavoriteFilms = films.filter((film) => !favoritesIds.includes(film.id));
 	// eslint-disable-next-line
@@ -46,21 +45,35 @@ export default function Profile() {
 						<>
 							<h2 className="cabinet-title">Your added movies</h2>
 							<div className="favorites-grid">
-								<article className="favorite-card">
-									<div className="favorite-card__poster">
-										<img
-											src="https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"
-											alt="Poster"
-										/>
-									</div>
-									<div className="favorite-card__content">
-										<h3 className="favorite-card__title">
-											The Shawshank Redemption
-										</h3>
-										<p className="favorite-card__genre">Drama • 9.3</p>
-										<button className="btn-remove">Удалить из списка</button>
-									</div>
-								</article>
+								{films
+									.filter((film) => film.userId === user.id)
+									.map((film, index) => {
+										return (
+											<article key={film.id} className="favorite-card">
+												<Link
+													to={`/films/film/${film.id}`}
+													className="favorite-card__poster">
+													<img src={film.poster} alt="Poster" />
+												</Link>
+												<div className="favorite-card__content">
+													<h3 className="favorite-card__title">
+														<Link to={`/films/film/${film.id}`}>
+															{film.title}
+														</Link>
+													</h3>
+													<p className="favorite-card__genre">
+														{film.genre} • {film.rating}
+													</p>
+													<button
+														type="button"
+														onClick={() => removeFilm(user, film.id)}
+														className="btn-remove">
+														Remove film
+													</button>
+												</div>
+											</article>
+										);
+									})}
 							</div>
 						</>
 					) : (

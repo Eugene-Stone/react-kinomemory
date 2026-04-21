@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 import { Link } from 'react-router-dom';
 import { useModalContext } from '@/context/ModalContext/useModalContext';
 import './FilmCard.scss';
 import useAuth from '../../context/AuthContext/useAuth';
 
-export default function FilmCard({ film, isFavorite, handleFavorite, loading }) {
+const FilmCard = memo(function FilmCard({ film, isFavorite, handleFavorite, loading }) {
 	const { user } = useAuth();
 
 	const modal = useModalContext();
@@ -61,4 +63,6 @@ export default function FilmCard({ film, isFavorite, handleFavorite, loading }) 
 			</div>
 		</li>
 	);
-}
+});
+
+export default FilmCard;
