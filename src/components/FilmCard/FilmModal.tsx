@@ -1,6 +1,6 @@
-// import React from 'react';
+import { Film } from '../../types/Film.ts';
 
-export default function FilmModal({ film }) {
+export default function FilmModal({ film }: { film: Film }) {
 	return (
 		<>
 			<p className="rate">{film.rating}</p>

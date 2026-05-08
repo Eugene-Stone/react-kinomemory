@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useModalContext } from '@/context/ModalContext/useModalContext.js';
+import { useModalContext } from '@/context/ModalContext/useModalContext';
 
 import FilmModal from '@/components/FilmCard/FilmModal';
 import LoginForm from '@/components/LoginForm/LoginForm';
@@ -14,7 +14,7 @@ export default function Modal() {
 	useEffect(() => {
 		if (!isOpen) return;
 
-		function handleKeyDown(e) {
+		function handleKeyDown(e: KeyboardEvent) {
 			if (e.key === 'Escape') {
 				close();
 			}
@@ -29,10 +29,10 @@ export default function Modal() {
 
 	if (!isOpen) return null;
 
-	const modalRoot = document.getElementById('modal-root');
+	const modalRoot = document.getElementById('modal-root')!;
 
 	let ModalTypeContent = null;
-	switch (content.type) {
+	switch (content?.type) {
 		case 'FILM_PREVIEW':
 			ModalTypeContent = <FilmModal film={content.payload} />;
 			break;

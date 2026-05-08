@@ -1,10 +1,18 @@
 import { createContext, useState, useEffect } from 'react';
+import { ModalContentType } from '../../types/Modal.ts';
 
-const ModalContext = createContext(null);
+type ModalContextType = {
+	open: (data: ModalContentType) => void;
+	close: () => void;
+	isOpen: boolean;
+	content: ModalContentType | null;
+};
 
-export function ModalProvider({ children }) {
+const ModalContext = createContext<ModalContextType | null>(null);
+
+export function ModalProvider({ children }: React.PropsWithChildren) {
 	const [isOpen, setIsOpen] = useState(false);
-	const [content, setContent] = useState(null);
+	const [content, setContent] = useState<ModalContentType | null>(null);
 
 	useEffect(() => {
 		if (isOpen) {
@@ -16,7 +24,7 @@ export function ModalProvider({ children }) {
 		};
 	}, [isOpen]);
 
-	function open(data) {
+	function open(data: ModalContentType) {
 		setContent(data);
 		setIsOpen(true);
 	}

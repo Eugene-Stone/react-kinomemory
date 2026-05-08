@@ -3,5 +3,8 @@ import { AuthContext } from './AuthContext';
 
 export default function useAuth() {
 	const context = useContext(AuthContext);
+	if (!context) {
+		throw new Error('Error AuthContext');
+	}
 	return context;
 }

@@ -1,11 +1,24 @@
-import { createContext, useState, useEffect, useEffectEvent } from 'react';
+import React, { createContext, useState, useEffect, useEffectEvent } from 'react';
 
-const AuthContext = createContext(null);
+type User = {
+	id: number;
+	login: string;
+	password: string;
+	role: string;
+};
 
-export function AuthProvider({ children }) {
-	const [user, setUser] = useState(null);
+type AuthContextType = {
+	user: User | null;
+	login: (login: string, password: string) => Promise<boolean>;
+	logout: () => void;
+};
 
-	const changeUser = useEffectEvent((user) => {
+const AuthContext = createContext<AuthContextType | null>(null);
+
+export function AuthProvider({ children }: React.PropsWithChildren) {
+	const [user, setUser] = useState<User | null>(null);
+
+	const changeUser = useEffectEvent((user: User | null) => {
 		setUser(user);
 	});
 
@@ -17,7 +30,7 @@ export function AuthProvider({ children }) {
 		}
 	}, []);
 
-	const login = async (login, password) => {
+	const login = async (login: string, password: string) => {
 		const res = await fetch(`http://localhost:3001/users?login=${login}&password=${password}`);
 		const data = await res.json();
 

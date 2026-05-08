@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../context/AuthContext/useAuth';
 import { useModalContext } from '@/context/ModalContext/useModalContext';
+import { FormLoginType } from '../../types/FormLoginType.ts';
 
 import './LoginForm.scss';
 
@@ -9,7 +10,7 @@ export default function LoginForm() {
 	const { user, login } = useAuth();
 	const modal = useModalContext();
 
-	const [status, setStatus] = useState();
+	const [status, setStatus] = useState<string | null>(null);
 	const {
 		register,
 		handleSubmit,
@@ -25,7 +26,7 @@ export default function LoginForm() {
 
 	// console.log(login);
 
-	async function onSubmit(data) {
+	async function onSubmit(data: FormLoginType) {
 		console.log(data);
 		setStatus('loading');
 
