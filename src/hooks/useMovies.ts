@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import { UserType } from '../types/UserType.ts';
+import { Film } from '../types/Film';
+import { Favorite } from '../types/Favorite';
 
 export function useMovies() {
-	const [films, setFilms] = useState([]);
-	const [favorites, setFavorites] = useState([]);
+	const [films, setFilms] = useState<Film[]>([]);
+	const [favorites, setFavorites] = useState<Favorite[]>([]);
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
+	const [error, setError] = useState<string | null>(null);
 
 	// Getting movies and a list of favorites
 	useEffect(() => {
@@ -17,8 +20,8 @@ export function useMovies() {
 					fetch(`http://localhost:3001/favorites`),
 				]);
 
-				if (!moviesRes.ok) throw new Error("Movies failed");
-				if (!favoritesRes.ok) throw new Error("Favorites failed");
+				if (!moviesRes.ok) throw new Error('Movies failed');
+				if (!favoritesRes.ok) throw new Error('Favorites failed');
 
 				const moviesData = await moviesRes.json();
 				const favoritesData = await favoritesRes.json();
@@ -26,7 +29,8 @@ export function useMovies() {
 				setFilms(moviesData);
 				setFavorites(favoritesData);
 			} catch (error) {
-				setError(error.message);
+				// setError(error.message);
+				setError(error instanceof Error ? error.message : 'Unknown error');
 				console.log(`Ошибка загрузки: ${error}`);
 			} finally {
 				setLoading(false);
@@ -37,7 +41,7 @@ export function useMovies() {
 	}, []);
 
 	// Add to favorites
-	async function addToFavorites(movieId, userId) {
+	async function addToFavorites(movieId: number, userId: number) {
 		console.log(movieId);
 
 		const alreadyAdded = favorites.find(
@@ -50,14 +54,14 @@ export function useMovies() {
 
 		try {
 			const response = await fetch(`http://localhost:3001/favorites`, {
-				method: "POST",
+				method: 'POST',
 				headers: {
-					"Content-Type": "application/json",
+					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({ movieId, userId }),
 			});
 
-			if (!response.ok) throw new Error("Error adding");
+			if (!response.ok) throw new Error('Error adding');
 
 			const newMovie = await response.json();
 			setFavorites((prev) => [...prev, newMovie]);
@@ -67,7 +71,7 @@ export function useMovies() {
 	}
 
 	// Removing Favorites
-	async function removeFromFavorites(movieId, userId) {
+	async function removeFromFavorites(movieId: number, userId: number) {
 		console.log(movieId);
 
 		const favoriteItem = favorites.find(
@@ -79,38 +83,33 @@ export function useMovies() {
 		console.log(favoriteItem.id);
 
 		try {
-			const response = await fetch(
-				`http://localhost:3001/favorites/${favoriteItem.id}`,
-				{
-					method: "DELETE",
-				},
-			);
+			const response = await fetch(`http://localhost:3001/favorites/${favoriteItem.id}`, {
+				method: 'DELETE',
+			});
 
-			if (!response.ok) throw new Error("Error deleting");
+			if (!response.ok) throw new Error('Error deleting');
 
-			setFavorites((prev) =>
-				prev.filter((movie) => movie.id !== favoriteItem.id),
-			);
+			setFavorites((prev) => prev.filter((movie) => movie.id !== favoriteItem.id));
 		} catch (err) {
 			console.error(err);
 		}
 	}
 
 	// Adding film
-	async function addFilm(user, dataFilm) {
+	async function addFilm(user: UserType, dataFilm: Film) {
 		const userId = user.id;
 		const id = Date.now().toString();
 
 		try {
 			const response = await fetch(`http://localhost:3001/movies`, {
-				method: "POST",
+				method: 'POST',
 				headers: {
-					"Content-Type": "application/json",
+					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({ ...dataFilm, id, userId }),
 			});
 
-			if (!response.ok) throw new Error("Error adding");
+			if (!response.ok) throw new Error('Error adding');
 
 			const newMovie = await response.json();
 			setFilms((prev) => [...prev, newMovie]);
@@ -122,15 +121,15 @@ export function useMovies() {
 	}
 
 	// Remove film
-	async function removeFilm(user, filmId) {
+	async function removeFilm(user: UserType, filmId: number) {
 		if (!user || user.role !== 'admin') return false;
 
 		try {
 			const response = await fetch(`http://localhost:3001/movies/${filmId}`, {
-				method: "DELETE",
+				method: 'DELETE',
 			});
 
-			if (!response.ok) throw new Error("Error remove");
+			if (!response.ok) throw new Error('Error remove');
 
 			setFilms((prev) => prev.filter((film) => film.id !== filmId));
 			return true;

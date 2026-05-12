@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext';
-import { useDebounce } from '@/hooks/useDebounce.js';
+import { useDebounce } from '@/hooks/useDebounce';
 import './Header.scss';
 
 import useAuth from '../../context/AuthContext/useAuth';

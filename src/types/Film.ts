@@ -1,3 +1,5 @@
+import { FilmCommentType } from './FilmCommentType';
+
 export type Film = {
 	id: number;
 	title: string;
@@ -6,5 +8,6 @@ export type Film = {
 	poster: string;
 	trailer: string;
 	description: string;
-	comments?: string[];
+	comments?: FilmCommentType[];
+	userId?: number;
 };

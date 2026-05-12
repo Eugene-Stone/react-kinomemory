@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
 
-export default function FilmPageSkeleton(props) {
+export default function FilmPageSkeleton() {
 	return (
 		<section className="film__page film__page--skeleton">
 			<ContentLoader
@@ -10,8 +10,7 @@ export default function FilmPageSkeleton(props) {
 				viewBox="0 0 1000 520"
 				style={{ maxWidth: 1000 }}
 				backgroundColor="#2f3640"
-				foregroundColor="#3d4754"
-				{...props}>
+				foregroundColor="#3d4754">
 				<rect x="0" y="0" rx="20" ry="20" width="300" height="420" />
 				<rect x="0" y="440" rx="14" ry="14" width="300" height="60" />
 

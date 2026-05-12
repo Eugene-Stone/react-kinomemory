@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
 
-export default function FilmCommentSkeleton(props) {
+export default function FilmCommentSkeleton() {
 	return (
 		<div className="review-skeleton">
 			<ContentLoader
@@ -9,8 +9,7 @@ export default function FilmCommentSkeleton(props) {
 				height={140}
 				viewBox="0 0 800 140"
 				backgroundColor="#2f3640"
-				foregroundColor="#3d4754"
-				{...props}>
+				foregroundColor="#3d4754">
 				<rect x="0" y="0" rx="6" ry="6" width="220" height="28" />
 				<rect x="620" y="4" rx="6" ry="6" width="150" height="20" />
 				<rect x="0" y="45" rx="2" ry="2" width="800" height="2" />
