@@ -9,9 +9,9 @@ import { UserType } from '@/types/UserType';
 
 type FilmCardType = {
 	film: Film;
-	isFavorite: boolean;
-	handleFavorite: (filmId: number, userId: number) => void;
-	loading: boolean;
+	isFavorite?: boolean;
+	handleFavorite?: (filmId: number, userId: number) => void;
+	loading?: boolean;
 };
 
 const FilmCard = memo(function FilmCard({
@@ -49,13 +49,13 @@ const FilmCard = memo(function FilmCard({
 				(isFavorite ? (
 					<button
 						className="btn btn--remove-favorite"
-						onClick={() => handleFavorite(film.id, user.id)}>
+						onClick={() => handleFavorite?.(film.id, user.id)}>
 						Remove Favorite
 					</button>
 				) : (
 					<button
 						className="btn btn--add-favorite"
-						onClick={() => handleFavorite(film.id, user.id)}>
+						onClick={() => handleFavorite?.(film.id, user.id)}>
 						Add Favorite
 					</button>
 				))}

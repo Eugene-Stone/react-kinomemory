@@ -5,11 +5,21 @@ import FilmCard from '../../components/FilmCard/FilmCard';
 
 import './Profile.scss';
 import AddFilm from '../../components/AddFilm/AddFilm';
+import { Film } from '@/types/Film';
+import { UserType } from '@/types/UserType';
+
+type ProfileContextType = {
+	films: Film[];
+	removeFromFavorites: (filmId: number, userId: number) => void;
+	favoritesIds: number[];
+	removeFilm: (user: UserType, filmId: number) => void;
+};
 
 export default function Profile() {
 	const { user, logout } = useAuth();
 
-	const { films, removeFromFavorites, favoritesIds, removeFilm } = useOutletContext();
+	const { films, removeFromFavorites, favoritesIds, removeFilm }: ProfileContextType =
+		useOutletContext();
 
 	const notFavoriteFilms = films.filter((film) => !favoritesIds.includes(film.id));
 	// eslint-disable-next-line

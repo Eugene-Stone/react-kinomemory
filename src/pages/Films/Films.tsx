@@ -5,6 +5,35 @@ import FilmCardSkeleton from '@/components/FilmCard/FilmCardSkeleton';
 import FilmsPagination from '@/components/FilmsPagination/FilmsPagination';
 
 import './Films.scss';
+import { Film } from '@/types/Film';
+
+type SortedFilmsType = {
+	array: Film[];
+	total: number;
+};
+
+type FilmsContextType = {
+	loading: boolean;
+	error: boolean | null;
+	addToFavorites: (movieId: number, userId: number) => void;
+	removeFromFavorites: (movieId: number, userId: number) => void;
+	sortType: string;
+	setSortType: React.Dispatch<React.SetStateAction<string>>;
+	favoritesIds: number[];
+	sortedFilms: SortedFilmsType;
+	onlyFavorites: boolean;
+	setOnlyFavorites: React.Dispatch<React.SetStateAction<boolean>>;
+	ratingOverNine: boolean;
+	setRatingOverNine: React.Dispatch<React.SetStateAction<boolean>>;
+	genre: string;
+	setGenre: React.Dispatch<React.SetStateAction<string>>;
+	genreList: string[];
+	currentPage: number;
+	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+	limitPerPage: number;
+	filtersReset: () => void;
+	hasActiveFilters: boolean;
+};
 
 function Films() {
 	const {
@@ -28,7 +57,7 @@ function Films() {
 		limitPerPage,
 		filtersReset,
 		hasActiveFilters,
-	} = useOutletContext();
+	}: FilmsContextType = useOutletContext();
 
 	const sortedFilmsArray = sortedFilms.array;
 	const totalPages = sortedFilms.total;
