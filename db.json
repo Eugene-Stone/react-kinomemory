@@ -1,19 +1,19 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "login": "admin",
       "password": "qwerty",
       "role": "admin"
     },
     {
-      "id": 2,
+      "id": "2",
       "login": "user",
       "password": "qwerty",
       "role": "user"
     },
     {
-      "id": 3,
+      "id": "3",
       "login": "user2",
       "password": "qwerty",
       "role": "user"
@@ -1218,6 +1218,16 @@
       "trailer": "https://www.jujodokezur.org",
       "description": "Labore dolor est fu",
       "userId": "1"
+    },
+    {
+      "id": "1778580369536",
+      "title": "Hic sequi totam culp",
+      "rating": "28",
+      "genre": "Necessitatibus amet",
+      "poster": "https://www.rozas.com.au",
+      "trailer": "https://www.boramycumul.in",
+      "description": "Fugiat non qui deser",
+      "userId": "1"
     }
   ],
   "favorites": [
@@ -1260,6 +1270,11 @@
       "id": "5e3d",
       "movieId": "11",
       "userId": "2"
+    },
+    {
+      "id": "f608",
+      "movieId": "26",
+      "userId": "1"
     }
   ]
 }

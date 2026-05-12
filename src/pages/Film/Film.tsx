@@ -13,11 +13,20 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import './Film.scss';
+import { Film as FilmType } from '@/types/Film';
+
+type FilmContextType = {
+	films: FilmType[];
+	favoritesIds: number[];
+	addToFavorites: (movieId: number, userId: number) => void;
+	removeFromFavorites: (movieId: number, userId: number) => void;
+};
 
 export default function Film() {
 	const { id } = useParams();
-	const { films, favoritesIds, addToFavorites, removeFromFavorites } = useOutletContext();
-	const isFavorite = favoritesIds.includes(id);
+	const { films, favoritesIds, addToFavorites, removeFromFavorites }: FilmContextType =
+		useOutletContext();
+	const isFavorite = favoritesIds.includes(Number(id));
 	const { user } = useAuth();
 
 	const film = films.find((f) => Number(f.id) === Number(id));
@@ -47,7 +56,10 @@ export default function Film() {
 								<span className="heart">❤️</span>
 								<button
 									className="btn btn--remove-favorite"
-									onClick={() => removeFromFavorites(id, user.id)}>
+									onClick={() => {
+										if (!id) return;
+										removeFromFavorites(Number(id), user.id);
+									}}>
 									Remove from Favorite
 								</button>
 							</>
@@ -56,7 +68,10 @@ export default function Film() {
 								<span className="heart">🤍</span>
 								<button
 									className="btn btn--add-favorite"
-									onClick={() => addToFavorites(id, user.id)}>
+									onClick={() => {
+										if (!id) return;
+										addToFavorites(Number(id), user.id);
+									}}>
 									Add to Favorite
 								</button>
 							</>

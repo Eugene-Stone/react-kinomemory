@@ -1,6 +1,19 @@
 import './FilmsFilters.scss';
 import useAuth from '../../context/AuthContext/useAuth';
 
+type FilmsFiltersProps = {
+	onlyFavorites: boolean;
+	setOnlyFavorites: React.Dispatch<React.SetStateAction<boolean>>;
+	ratingOverNine: boolean;
+	setRatingOverNine: React.Dispatch<React.SetStateAction<boolean>>;
+	genre: string;
+	setGenre: React.Dispatch<React.SetStateAction<string>>;
+	genreList: string[];
+	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+	filtersReset: () => void;
+	hasActiveFilters: boolean;
+};
+
 export default function FilmsFilters({
 	onlyFavorites,
 	setOnlyFavorites,
@@ -12,7 +25,7 @@ export default function FilmsFilters({
 	setCurrentPage,
 	filtersReset,
 	hasActiveFilters,
-}) {
+}: FilmsFiltersProps) {
 	const { user } = useAuth();
 
 	return (

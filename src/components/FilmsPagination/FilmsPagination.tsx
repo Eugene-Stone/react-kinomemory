@@ -1,6 +1,16 @@
 import './FilmsPagination.scss';
 
-export default function FilmsPagination({ currentPage, totalPages, setCurrentPage }) {
+type FilmsPaginationProps = {
+	currentPage: number;
+	totalPages: number;
+	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export default function FilmsPagination({
+	currentPage,
+	totalPages,
+	setCurrentPage,
+}: FilmsPaginationProps) {
 	function handlePrev() {
 		if (currentPage > 1) {
 			setCurrentPage(currentPage - 1);
@@ -13,7 +23,7 @@ export default function FilmsPagination({ currentPage, totalPages, setCurrentPag
 		}
 	}
 
-	function getPagination(currentPage, totalPages) {
+	function getPagination(currentPage: number, totalPages: number) {
 		const pages = [];
 
 		const delta = 1; // сколько страниц вокруг текущей
@@ -72,7 +82,7 @@ export default function FilmsPagination({ currentPage, totalPages, setCurrentPag
 						) : (
 							<button
 								className="navigation__link"
-								onClick={() => setCurrentPage(page)}>
+								onClick={() => setCurrentPage(Number(page))}>
 								{page}
 							</button>
 						)}

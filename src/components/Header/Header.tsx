@@ -2,13 +2,20 @@ import { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useThemeContext } from '@/context/ThemeContext/useThemeContext';
 import { useDebounce } from '@/hooks/useDebounce';
+import { Film } from '../../types/Film.ts';
 import './Header.scss';
 
 import useAuth from '../../context/AuthContext/useAuth';
 
 import { useModalContext } from '@/context/ModalContext/useModalContext';
 
-export default function Header({ searchQuery, setSearchQuery, films }) {
+type HeaderProps = {
+	searchQuery: string;
+	setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+	films: Film[];
+};
+
+export default function Header({ searchQuery, setSearchQuery, films }: HeaderProps) {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { isDark, setIsDark } = useThemeContext();
@@ -57,7 +64,7 @@ export default function Header({ searchQuery, setSearchQuery, films }) {
 
 	// console.log(searchList);
 
-	function handleSearchChange(value) {
+	function handleSearchChange(value: string) {
 		setSearchQuery(value);
 
 		// If not films page
