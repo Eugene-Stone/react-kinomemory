@@ -4,10 +4,17 @@ import useAuth from '../../context/AuthContext/useAuth';
 import { useOutletContext } from 'react-router-dom';
 import './AddFilm.scss';
 
+import { UserType } from '../../types/UserType';
+import { Film, AddFilmForm } from '../../types/Film';
+
+type OutletContextType = {
+	addFilm: (user: UserType | null, dataFilm: AddFilmForm) => Promise<boolean>;
+};
+
 export default function AddFilm() {
 	const [status, setStatus] = useState('');
 	const { user } = useAuth();
-	const { addFilm } = useOutletContext();
+	const { addFilm } = useOutletContext<OutletContextType>();
 	// console.log(addFilm);
 
 	const {
@@ -15,11 +22,11 @@ export default function AddFilm() {
 		handleSubmit,
 		reset,
 		formState: { errors, isValid },
-	} = useForm({
+	} = useForm<AddFilmForm>({
 		mode: 'onSubmit',
 	});
 
-	async function onSubmit(data) {
+	async function onSubmit(data: AddFilmForm) {
 		setStatus('loading');
 
 		const success = await addFilm(user, data);

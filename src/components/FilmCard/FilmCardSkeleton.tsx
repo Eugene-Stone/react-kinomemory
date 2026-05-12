@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader';
 
-const FilmCardSkeleton = (props) => (
+const FilmCardSkeleton = () => (
 	<ContentLoader
 		className="film-card-skeleton"
 		speed={2}
@@ -8,8 +8,7 @@ const FilmCardSkeleton = (props) => (
 		height={208}
 		viewBox="0 0 100 208"
 		backgroundColor="#2f3640"
-		foregroundColor="#3d4754"
-		{...props}>
+		foregroundColor="#3d4754">
 		<rect x="0" y="0" rx="5" ry="5" width="100" height="150" />
 		<rect x="20" y="195" rx="2" ry="2" width="60" height="7" />
 		<rect x="5" y="155" rx="3" ry="3" width="90" height="14" />

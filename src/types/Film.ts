@@ -11,3 +11,5 @@ export type Film = {
 	comments?: FilmCommentType[];
 	userId?: number;
 };
+
+export type AddFilmForm = Omit<Film, 'id' | 'comments' | 'userId'>;

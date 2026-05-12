@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { UserType } from '../types/UserType.ts';
-import { Film } from '../types/Film';
+import { Film, AddFilmForm } from '../types/Film';
 import { Favorite } from '../types/Favorite';
 
 export function useMovies() {
@@ -96,7 +96,7 @@ export function useMovies() {
 	}
 
 	// Adding film
-	async function addFilm(user: UserType, dataFilm: Film) {
+	async function addFilm(user: UserType, dataFilm: AddFilmForm) {
 		const userId = user.id;
 		const id = Date.now().toString();
 

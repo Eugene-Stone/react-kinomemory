@@ -4,8 +4,22 @@ import { Link } from 'react-router-dom';
 import { useModalContext } from '@/context/ModalContext/useModalContext';
 import './FilmCard.scss';
 import useAuth from '../../context/AuthContext/useAuth';
+import { Film } from '@/types/Film';
+import { UserType } from '@/types/UserType';
 
-const FilmCard = memo(function FilmCard({ film, isFavorite, handleFavorite, loading }) {
+type FilmCardType = {
+	film: Film;
+	isFavorite: boolean;
+	handleFavorite: (filmId: number, userId: number) => void;
+	loading: boolean;
+};
+
+const FilmCard = memo(function FilmCard({
+	film,
+	isFavorite,
+	handleFavorite,
+	loading,
+}: FilmCardType) {
 	const { user } = useAuth();
 
 	const modal = useModalContext();
@@ -13,7 +27,7 @@ const FilmCard = memo(function FilmCard({ film, isFavorite, handleFavorite, load
 	// const { open } = useModalContext();
 	// console.log(modal);
 
-	const getModalContent = (film) => (
+	const getModalContent = (film: Film) => (
 		<>
 			<p className="rate">{film.rating}</p>
 			<p className="genree">{film.genre}</p>
