@@ -1,4 +1,4 @@
-import { Link, useOutletContext } from 'react-router-dom';
+import { Link, useOutletContext, useNavigate } from 'react-router-dom';
 import useAuth from '../../context/AuthContext/useAuth';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import FilmCard from '../../components/FilmCard/FilmCard';
@@ -16,7 +16,13 @@ type ProfileContextType = {
 };
 
 export default function Profile() {
+	const navigate = useNavigate();
 	const { user, logout } = useAuth();
+
+	const handleLogout = () => {
+		logout();
+		navigate('/');
+	};
 
 	const { films, removeFromFavorites, favoritesIds, removeFilm }: ProfileContextType =
 		useOutletContext();
@@ -36,7 +42,7 @@ export default function Profile() {
 			<div className="cabinet-container">
 				<aside className="cabinet-sidebar">
 					<div className="cabinet-navigation">
-						<button type="button" onClick={logout} className="btn-logout">
+						<button type="button" onClick={handleLogout} className="btn-logout">
 							Exit
 						</button>
 					</div>

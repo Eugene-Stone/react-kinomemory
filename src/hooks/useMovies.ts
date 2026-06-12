@@ -74,27 +74,36 @@ export function useMovies() {
 	}
 
 	// Removing Favorites
-	async function removeFromFavorites(movieId: number, userId: number) {
-		console.log(movieId);
+	async function removeFromFavorites(movieId: number, userId: number): Promise<boolean> {
+		console.log('removeFromFavorites called with:', { movieId, userId });
 
 		const favoriteItem = favorites.find(
 			(film) => film.movieId === movieId && film.userId === userId,
 		);
 
-		if (!favoriteItem) return;
+		if (!favoriteItem) {
+			console.warn('Favorite item not found:', { movieId, userId });
+			return false;
+		}
 
-		console.log(favoriteItem.id);
+		console.log('Removing favorite:', favoriteItem.id);
 
 		try {
 			const response = await fetch(`${BASE_URL}/favorites/${favoriteItem.id}`, {
 				method: 'DELETE',
 			});
 
-			if (!response.ok) throw new Error('Error deleting');
+			if (!response.ok) {
+				const errorText = await response.text();
+				throw new Error(`Error deleting favorite: ${response.status} ${errorText}`);
+			}
 
 			setFavorites((prev) => prev.filter((movie) => movie.id !== favoriteItem.id));
+			console.log('Favorite removed successfully');
+			return true;
 		} catch (err) {
-			console.error(err);
+			console.error('Error removing favorite:', err);
+			return false;
 		}
 	}
 

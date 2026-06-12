@@ -1300,7 +1300,7 @@ const data = {
 
 const CORS_HEADERS = {
 	"Access-Control-Allow-Origin": "*",
-	"Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+	"Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
 	"Access-Control-Allow-Headers": "Content-Type",
 };
 
@@ -1335,6 +1335,21 @@ async function handleRequest(request) {
 		const body = await request.json();
 		data.favorites.push(body);
 		return jsonResponse(body, 201);
+	}
+
+	if (request.method === "DELETE" && path.startsWith("favorites/")) {
+		const id = path.split("/")[1];
+		const index = data.favorites.findIndex((item) => item.id === id);
+
+		if (index === -1) {
+			return new Response(JSON.stringify({ message: "Not found" }), {
+				status: 404,
+				headers: CORS_HEADERS,
+			});
+		}
+
+		const deleted = data.favorites.splice(index, 1)[0];
+		return jsonResponse(deleted, 200);
 	}
 
 	return new Response(JSON.stringify({ message: "Not found" }), {

@@ -6,17 +6,19 @@ import Profile from '@/pages/Profile/Profile';
 import Privacy from '@/pages/Privacy/Privacy';
 import Film from '@/pages/Film/Film';
 
-export const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <Layout />,
-		children: [
-			{ path: '*', element: <NotFoundPage /> },
-			{ index: true, element: <Home /> },
-			{ path: '/react-kinomemory', element: <Home /> },
-			{ path: '/profile', element: <Profile /> },
-			{ path: '/privacy', element: <Privacy /> },
-			{ path: '/films/film/:id', element: <Film /> },
-		],
-	},
-]);
+export const router = createBrowserRouter(
+	[
+		{
+			path: '/',
+			element: <Layout />,
+			children: [
+				{ path: '*', element: <NotFoundPage /> },
+				{ index: true, element: <Home /> },
+				{ path: '/profile', element: <Profile /> },
+				{ path: '/privacy', element: <Privacy /> },
+				{ path: '/films/film/:id', element: <Film /> },
+			],
+		},
+	],
+	{ basename: '/react-kinomemory' },
+);
