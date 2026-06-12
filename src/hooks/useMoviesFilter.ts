@@ -15,7 +15,7 @@ export function useMoviesFilter(
 
 	// For pagination
 	const [currentPage, setCurrentPage] = useState(1);
-	const limitPerPage = 8;
+	const limitPerPage = 4;
 
 	const [sortType, setSortType] = useState(() => {
 		return localStorage.getItem('sortType') || 'alphabet';
