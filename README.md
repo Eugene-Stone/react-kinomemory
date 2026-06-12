@@ -1,7 +1,8 @@
 # 🎬 KinoMemory
 
 Веб-приложение для управления фильмами и избранным. SPA на React с авторизацией, системой рекомендаций и функциями администратора.
-### Demo - https://eugene-stone.github.io/react-kinomemory/
+### Demo - https://eugene-stone.github.io/react-kinomemory
+
 ## 📋 Описание проекта
 
 KinoMemory — это интерактивное приложение для просмотра каталога фильмов с возможностью:

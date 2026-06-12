@@ -3,6 +3,9 @@ import { UserType } from '../types/UserType.ts';
 import { Film, AddFilmForm } from '../types/Film';
 import { Favorite } from '../types/Favorite';
 
+// const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://react-kinomemory.eugenestone-work.workers.dev/'.replace(/\/+$/, '');
+
 export function useMovies() {
 	const [films, setFilms] = useState<Film[]>([]);
 	const [favorites, setFavorites] = useState<Favorite[]>([]);
@@ -16,8 +19,8 @@ export function useMovies() {
 				setLoading(true);
 
 				const [moviesRes, favoritesRes] = await Promise.all([
-					fetch(`http://localhost:3001/movies`),
-					fetch(`http://localhost:3001/favorites`),
+					fetch(`${BASE_URL}/movies`),
+					fetch(`${BASE_URL}/favorites`),
 				]);
 
 				if (!moviesRes.ok) throw new Error('Movies failed');
@@ -53,7 +56,7 @@ export function useMovies() {
 		}
 
 		try {
-			const response = await fetch(`http://localhost:3001/favorites`, {
+			const response = await fetch(`${BASE_URL}/favorites`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -83,7 +86,7 @@ export function useMovies() {
 		console.log(favoriteItem.id);
 
 		try {
-			const response = await fetch(`http://localhost:3001/favorites/${favoriteItem.id}`, {
+			const response = await fetch(`${BASE_URL}/favorites/${favoriteItem.id}`, {
 				method: 'DELETE',
 			});
 
@@ -101,7 +104,7 @@ export function useMovies() {
 		const id = Date.now().toString();
 
 		try {
-			const response = await fetch(`http://localhost:3001/movies`, {
+			const response = await fetch(`${BASE_URL}/movies`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -125,7 +128,7 @@ export function useMovies() {
 		if (!user || user.role !== 'admin') return false;
 
 		try {
-			const response = await fetch(`http://localhost:3001/movies/${filmId}`, {
+			const response = await fetch(`${BASE_URL}/movies/${filmId}`, {
 				method: 'DELETE',
 			});
 
