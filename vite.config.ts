@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from "path";
-import { fileURLToPath } from "url";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,11 +11,11 @@ export default defineConfig({
 	plugins: [react()],
 	resolve: {
 		alias: {
-			"@": path.resolve(__dirname, "./src"),
-			"@components": path.resolve(__dirname, "./src/components"),
+			'@': path.resolve(__dirname, './src'),
+			'@components': path.resolve(__dirname, './src/components'),
 		},
 	},
-	// base: "/react-kinomemory", // Для корректной работы GitHub Pages, еще нужно добавить строчку  "postbuild": "cp dist/index.html dist/404.html", в package.json
+	base: '/react-kinomemory', // Для корректной работы GitHub Pages, еще нужно добавить строчку  "postbuild": "cp dist/index.html dist/404.html", в package.json
 
 	//   server: {
 	//     open: true, // Проект будет сам открываться в браузере при запуске

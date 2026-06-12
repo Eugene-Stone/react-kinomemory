@@ -76,7 +76,7 @@ function Films() {
 		);
 	});
 
-	const loadingSkeleton = Array.from({ length: 8 }, (_, i) => (
+	const loadingSkeleton = Array.from({ length: 4 }, (_, i) => (
 		<li key={i}>
 			<FilmCardSkeleton />
 		</li>

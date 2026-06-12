@@ -13,6 +13,7 @@ export const router = createBrowserRouter([
 		children: [
 			{ path: '*', element: <NotFoundPage /> },
 			{ index: true, element: <Home /> },
+			{ path: '/react-kinomemory', element: <Home /> },
 			{ path: '/profile', element: <Profile /> },
 			{ path: '/privacy', element: <Privacy /> },
 			{ path: '/films/film/:id', element: <Film /> },
