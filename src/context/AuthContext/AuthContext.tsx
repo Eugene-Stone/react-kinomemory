@@ -9,6 +9,9 @@ type AuthContextType = {
 	logout: () => void;
 };
 
+// const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://react-kinomemory.eugenestone-work.workers.dev/'.replace(/\/+$/, '');
+
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: React.PropsWithChildren) {
@@ -27,7 +30,9 @@ export function AuthProvider({ children }: React.PropsWithChildren) {
 	}, []);
 
 	const login = async (login: string, password: string) => {
-		const res = await fetch(`http://localhost:3001/users?login=${login}&password=${password}`);
+		const res = await fetch(
+			`${BASE_URL}/users?login=${encodeURIComponent(login)}&password=${encodeURIComponent(password)}`,
+		);
 		const data = await res.json();
 
 		if (data.length) {

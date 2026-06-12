@@ -1237,27 +1237,7 @@ const data = {
 					text: "Fincher's style is unmistakable—dark, gritty, and cool.",
 				},
 			],
-		},
-		{
-			id: "1776760447339",
-			title: "Illum anim ducimus",
-			rating: "23",
-			genre: "Voluptates aut culpa",
-			poster: "https://www.seciwekepoquh.tv",
-			trailer: "https://www.jujodokezur.org",
-			description: "Labore dolor est fu",
-			userId: "1",
-		},
-		{
-			id: "1778580369536",
-			title: "Hic sequi totam culp",
-			rating: "28",
-			genre: "Necessitatibus amet",
-			poster: "https://www.rozas.com.au",
-			trailer: "https://www.boramycumul.in",
-			description: "Fugiat non qui deser",
-			userId: "1",
-		},
+		}
 	],
 	favorites: [
 		{
@@ -1321,7 +1301,18 @@ async function handleRequest(request) {
 
 	if (request.method === "GET") {
 		if (path === "users") {
-			return jsonResponse(data.users);
+			const login = url.searchParams.get("login");
+			const password = url.searchParams.get("password");
+			let users = data.users;
+
+			if (login) {
+				users = users.filter((user) => user.login === login);
+			}
+			if (password) {
+				users = users.filter((user) => user.password === password);
+			}
+
+			return jsonResponse(users);
 		}
 		if (path === "movies") {
 			return jsonResponse(data.movies);
@@ -1349,6 +1340,22 @@ async function handleRequest(request) {
 		}
 
 		const deleted = data.favorites.splice(index, 1)[0];
+		return jsonResponse(deleted, 200);
+	}
+
+	if (request.method === "DELETE" && path.startsWith("movies/")) {
+		const id = path.split("/")[1];
+		const index = data.movies.findIndex((item) => item.id === id);
+
+		if (index === -1) {
+			return new Response(JSON.stringify({ message: "Not found" }), {
+				status: 404,
+				headers: CORS_HEADERS,
+			});
+		}
+
+		const deleted = data.movies.splice(index, 1)[0];
+		data.favorites = data.favorites.filter((item) => item.movieId !== id);
 		return jsonResponse(deleted, 200);
 	}
 
